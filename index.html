@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3Singles Café | Chiplun</title>
+    <title>3Singles Café | Premium Experience</title>
     
     <!-- Premium Elegant Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,49 +45,94 @@
         ::-webkit-scrollbar { display: none; }
         .mask-container { overflow: hidden; position: relative; }
         
-        /* High-end structural borders */
         .structural-border-bottom { border-bottom: 1px solid #dcd9d0; }
         .structural-border-right { border-right: 1px solid #dcd9d0; }
+
+        /* --- PREMIUM PRELOADER CSS --- */
+        .ambient-glow {
+            background-color: #f8f7f4;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, #f8f7f4 70%);
+        }
+
+        .metal-housing {
+            background: linear-gradient(145deg, #2c2e30, #0a0a0a);
+            box-shadow: 
+                inset 2px 2px 6px rgba(255, 255, 255, 0.15), 
+                inset -2px -2px 6px rgba(0, 0, 0, 0.9),
+                0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid #222;
+        }
+
+        .signal-light {
+            position: relative;
+            background-color: #111;
+            box-shadow: inset 0px 6px 12px rgba(0, 0, 0, 0.9);
+            border: 2px solid #080808;
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        /* Glass Reflection / Shine */
+        .signal-light::after {
+            content: '';
+            position: absolute;
+            top: 4%; left: 15%; width: 70%; height: 35%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(1px);
+        }
+        
+        #real-logo {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            background: white;
+        }
     </style>
 </head>
 <body class="font-sans overflow-x-hidden">
 
-    <!-- 1. THE AUTHENTIC TRAFFIC LIGHT PRELOADER -->
-    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center bg-cream">
+    <!-- 1. CINEMATIC TRAFFIC LIGHT PRELOADER -->
+    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center ambient-glow">
         
-        <!-- Physical Traffic Light Housing -->
-        <div id="traffic-housing" class="relative z-20 w-24 h-64 bg-dark rounded-full p-4 flex flex-col justify-between items-center shadow-2xl border border-gray-800">
-            <!-- Red Light -->
-            <div id="light-red" class="w-14 h-14 rounded-full bg-[#3a080a] border-2 border-black/50 transition-colors"></div>
-            <!-- Yellow Light -->
-            <div id="light-yellow" class="w-14 h-14 rounded-full bg-[#4a320f] border-2 border-black/50 transition-colors"></div>
-            <!-- Green Light -->
-            <div id="light-green" class="w-14 h-14 rounded-full bg-[#0a2e1c] border-2 border-black/50 transition-colors"></div>
+        <div class="housing-container relative flex flex-col items-center">
+            <!-- Realistic Traffic Light Housing -->
+            <div id="traffic-housing" class="relative z-20 w-24 h-64 metal-housing rounded-full p-4 flex flex-col justify-between items-center">
+                <!-- Red Light -->
+                <div id="light-red" class="w-14 h-14 signal-light"></div>
+                <!-- Yellow Light -->
+                <div id="light-yellow" class="w-14 h-14 signal-light"></div>
+                <!-- Green Light -->
+                <div id="light-green" class="w-14 h-14 signal-light"></div>
+            </div>
+
+            <!-- Preloader Status Text -->
+            <div id="loader-status" class="absolute top-[110%] w-64 h-8 flex justify-center items-center">
+                <span id="text-red" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandRed opacity-0">Preparing freshness</span>
+                <span id="text-yellow" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandYellow opacity-0">Warming flavours</span>
+                <span id="text-green" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandGreen opacity-0">Welcome to 3Singles</span>
+            </div>
         </div>
 
-        <!-- The Real Logo (Hidden initially, waits for the green light) -->
-        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-50">
+        <!-- The Real Logo Reveal -->
+        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-[0.9] flex flex-col items-center justify-center">
             <!-- Ensure this matches your exact uploaded filename -->
-            <img src="logo.png" alt="3Singles Logo" class="w-56 md:w-80 lg:w-96 drop-shadow-2xl rounded-full bg-white p-2">
+            <img id="real-logo" src="logo.png" alt="3Singles Logo" class="w-56 md:w-80 lg:w-96 rounded-full p-2">
         </div>
     </div>
 
     <!-- 2. EDITORIAL NAVIGATION -->
     <nav class="fixed top-0 w-full z-40 bg-cream/80 backdrop-blur-md structural-border-bottom">
         <div class="px-6 md:px-12 flex justify-between items-center h-20 md:h-24">
-            
             <!-- Left Text -->
             <div class="w-1/3 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
                 Est. Chiplun
             </div>
-
-            <!-- Center Logo (Scales dynamically and overlaps the border beautifully) -->
+            <!-- Center Logo -->
             <div class="absolute left-1/2 -translate-x-1/2 top-4 md:top-6 z-50">
                 <div class="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden bg-white shadow-md border border-borderGray flex items-center justify-center">
                     <img src="logo.png" alt="Logo" class="w-[90%] h-[90%] object-contain">
                 </div>
             </div>
-
             <!-- Right Text -->
             <div class="w-1/3 text-right text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
                 Premium Menu
@@ -142,7 +187,7 @@
             </div>
         </section>
 
-        <!-- Premium Menu Layout (Michelin-style typography) -->
+        <!-- Premium Menu Layout -->
         <section class="py-32 px-6 md:px-16 max-w-6xl mx-auto">
             
             <div class="text-center mb-24 mask-container">
@@ -150,9 +195,7 @@
                 <h3 class="section-title text-4xl md:text-6xl font-serif">Curated Offerings</h3>
             </div>
 
-            <!-- Menu Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-20">
-                
                 <!-- Signature Sandwiches -->
                 <div>
                     <h4 class="text-2xl font-serif italic mb-10 text-brandRed border-b border-borderGray pb-4">Signature Sandwiches</h4>
@@ -182,13 +225,12 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </section>
         
         <!-- Elegant Footer -->
         <footer class="py-16 px-6 border-t border-borderGray text-center">
-            <img src="logo.png" alt="3Singles Mark" class="w-12 h-12 mx-auto mb-6 grayscale opacity-40">
+            <img src="1000296198_2.png" alt="3Singles Mark" class="w-12 h-12 mx-auto mb-6 grayscale opacity-40">
             <p class="text-gray-400 text-xs tracking-[0.3em] uppercase">3Singles Cafe • Chiplun • Bespoke Architecture</p>
         </footer>
     </main>
@@ -197,60 +239,71 @@
         window.addEventListener('DOMContentLoaded', () => {
             const tl = gsap.timeline();
 
-            // 1. Authentic Traffic Light Ignition Sequence
-            // Red turns on
-            tl.to("#light-red", { 
-                backgroundColor: "#ff2a2a", 
-                boxShadow: "0 0 30px rgba(255,42,42,0.8)", 
-                duration: 0.2, 
-                delay: 0.5 
-            })
-            // Yellow turns on
-            .to("#light-yellow", { 
-                backgroundColor: "#ffba08", 
-                boxShadow: "0 0 30px rgba(255,186,8,0.8)", 
-                duration: 0.2, 
-                delay: 0.3 
-            })
-            // Green turns on (GO!)
-            .to("#light-green", { 
-                backgroundColor: "#00ff7f", 
-                boxShadow: "0 0 40px rgba(0,255,127,1)", 
-                duration: 0.2, 
-                delay: 0.3 
-            });
+            // 1. Red Light Sequence
+            tl.fromTo("#text-red", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" })
+              .to("#light-red", { 
+                  backgroundColor: "#ff2a2a", 
+                  boxShadow: "0 0 50px rgba(255,42,42,0.8), inset 0 0 25px rgba(255,255,255,0.5)", 
+                  duration: 0.6, 
+                  ease: "power2.out" 
+              }, "<");
 
-            // 2. The Housing collapses and fades
-            tl.to("#traffic-housing", { 
-                scale: 0.3, 
+            // 2. Yellow Light Sequence
+            tl.to("#light-red", { backgroundColor: "#111", boxShadow: "inset 0px 6px 12px rgba(0,0,0,0.9)", duration: 0.4 }, "+=0.6")
+              .to("#text-red", { opacity: 0, y: -5, duration: 0.3 }, "<")
+              .fromTo("#text-yellow", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "<0.1")
+              .to("#light-yellow", { 
+                  backgroundColor: "#ffba08", 
+                  boxShadow: "0 0 50px rgba(255,186,8,0.8), inset 0 0 25px rgba(255,255,255,0.5)", 
+                  duration: 0.6, 
+                  ease: "power2.out" 
+              }, "<");
+
+            // 3. Green Light Sequence
+            tl.to("#light-yellow", { backgroundColor: "#111", boxShadow: "inset 0px 6px 12px rgba(0,0,0,0.9)", duration: 0.4 }, "+=0.6")
+              .to("#text-yellow", { opacity: 0, y: -5, duration: 0.3 }, "<")
+              .fromTo("#text-green", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "<0.1")
+              .to("#light-green", { 
+                  backgroundColor: "#00ff7f", 
+                  boxShadow: "0 0 60px rgba(0,255,127,0.9), inset 0 0 25px rgba(255,255,255,0.6)", 
+                  duration: 0.6, 
+                  ease: "power2.out" 
+              }, "<");
+
+            // 4. Smooth Fade/Scale Signal Housing
+            tl.to(".housing-container", { 
+                scale: 0.9, 
                 opacity: 0, 
-                duration: 0.5, 
-                ease: "power2.in" 
-            }, "+=0.3");
+                duration: 0.6, 
+                ease: "power2.inOut" 
+            }, "+=0.5");
 
-            // 3. Real Logo Explodes into view
-            tl.to("#real-logo-container", { 
-                opacity: 1, 
-                scale: 1, 
-                duration: 0.8, 
-                ease: "elastic.out(1, 0.6)" 
-            }, "-=0.1");
+            // 5. Premium Soft Logo Reveal
+            tl.fromTo("#real-logo-container", 
+                { scale: 0.9, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" }, 
+                "-=0.3"
+            );
+            // Slight glowing pulse on logo
+            tl.to("#real-logo", { 
+                boxShadow: "0 0 60px rgba(255,255,255,0.8), 0 10px 40px rgba(0,0,0,0.1)", 
+                duration: 1, 
+                ease: "power2.out" 
+            }, "<0.2");
 
-            // 4. Slide up the curtain wrapper
+            // 6. Cinematic Curtain Reveal
             tl.to("#loader-wrapper", {
                 yPercent: -100,
                 duration: 1.2,
                 ease: "power4.inOut",
-                delay: 1, // Let them admire the logo for 1 second
+                delay: 0.8, 
                 onComplete: () => {
                     document.getElementById('loader-wrapper').style.display = 'none';
                 }
             })
             
-            // 5. Reveal the beautiful typography
+            // 7. Reveal Website
             .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
-            
-            // 6. Staggered text reveal for hero
             .from(".hero-text", {
                 y: 50,
                 opacity: 0,
@@ -259,7 +312,7 @@
                 ease: "power3.out"
             }, "-=0.6");
 
-            // 7. Menu Item Scroll Reveals
+            // Scroll Reveal Logics
             const menuItems = document.querySelectorAll('.menu-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -269,10 +322,8 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             menuItems.forEach(item => observer.observe(item));
 
-            // Section Title Scroll Reveal
             const titles = document.querySelectorAll('.section-title');
             const titleObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
