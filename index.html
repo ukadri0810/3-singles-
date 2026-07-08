@@ -3,17 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3Singles Café | Premium Experience</title>
+    <title>3Singles Café | Chiplun</title>
     
-    <!-- Premium Elegant Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- GSAP for Premium Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     
     <script>
@@ -24,9 +21,11 @@
                 brandRed: '#b81d24',
                 brandYellow: '#f3a633',
                 brandGreen: '#259a61',
-                dark: '#0a0a0a',
-                cream: '#f8f7f4',
-                borderGray: '#dcd9d0'
+                charcoal: '#2d2926',
+                warmCream: '#faf8f5',
+                paper: '#f2eee8',
+                ink: '#4a4643',
+                divider: '#e5e1d8'
               },
               fontFamily: {
                 serif: ['Playfair Display', 'serif'],
@@ -38,16 +37,14 @@
     </script>
     <style>
         body { 
-            background-color: #f8f7f4; 
-            color: #0a0a0a;
+            background-color: #faf8f5; 
+            color: #2d2926;
             -webkit-font-smoothing: antialiased;
         }
         ::-webkit-scrollbar { display: none; }
         .mask-container { overflow: hidden; position: relative; }
-        
-        .structural-border-bottom { border-bottom: 1px solid #dcd9d0; }
 
-        /* --- PREMIUM PRELOADER CSS --- */
+        /* --- PREMIUM PRELOADER CSS (UNTOUCHED) --- */
         .ambient-glow {
             background-color: #f8f7f4;
             background-image: radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, #f8f7f4 70%);
@@ -71,7 +68,6 @@
             border-radius: 50%;
         }
 
-        /* Glass Reflection / Shine */
         .signal-light::after {
             content: '';
             position: absolute;
@@ -87,215 +83,185 @@
             background: white;
         }
 
-        /* Hero Image Gradient Mask */
-        .hero-image-mask {
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+        /* --- CAFÉ SPECIFIC CSS --- */
+        .menu-board {
+            background-color: #fefdfc;
+            box-shadow: 0 4px 20px rgba(45, 41, 38, 0.03), 0 1px 3px rgba(45, 41, 38, 0.02);
+            border: 1px solid #e5e1d8;
+        }
+        
+        .menu-category-title {
+            position: relative;
+            display: inline-block;
+        }
+        .menu-category-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 100%;
+            height: 2px;
+            background-color: currentColor;
+            opacity: 0.2;
         }
     </style>
 </head>
 <body class="font-sans overflow-x-hidden">
 
-    <!-- 1. CINEMATIC TRAFFIC LIGHT PRELOADER -->
     <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center ambient-glow">
-        
         <div class="housing-container relative flex flex-col items-center">
-            <!-- Realistic Traffic Light Housing -->
             <div id="traffic-housing" class="relative z-20 w-24 h-64 metal-housing rounded-full p-4 flex flex-col justify-between items-center">
-                <!-- Red Light -->
                 <div id="light-red" class="w-14 h-14 signal-light"></div>
-                <!-- Yellow Light -->
                 <div id="light-yellow" class="w-14 h-14 signal-light"></div>
-                <!-- Green Light -->
                 <div id="light-green" class="w-14 h-14 signal-light"></div>
             </div>
-
-            <!-- Preloader Status Text -->
             <div id="loader-status" class="absolute top-[110%] w-64 h-8 flex justify-center items-center">
                 <span id="text-red" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandRed opacity-0">Preparing freshness</span>
                 <span id="text-yellow" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandYellow opacity-0">Warming flavours</span>
                 <span id="text-green" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandGreen opacity-0">Welcome to 3Singles</span>
             </div>
         </div>
-
-        <!-- The Real Logo Reveal -->
         <div id="real-logo-container" class="absolute z-10 opacity-0 scale-[0.9] flex flex-col items-center justify-center">
             <img id="real-logo" src="logo.png" alt="3Singles Logo" class="w-56 md:w-80 lg:w-96 rounded-full p-2">
         </div>
     </div>
 
-    <!-- 2. EDITORIAL NAVIGATION -->
-    <nav class="fixed top-0 w-full z-40 bg-cream/90 backdrop-blur-md structural-border-bottom">
-        <div class="px-6 md:px-12 max-w-[1600px] mx-auto flex justify-between items-center h-20 md:h-24">
-            <!-- Left Text -->
-            <div class="w-1/3 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                Est. Chiplun
+    <nav class="fixed top-0 w-full z-40 bg-warmCream/95 backdrop-blur-md border-b border-divider">
+        <div class="px-6 md:px-12 max-w-7xl mx-auto flex justify-between items-center h-20 md:h-24">
+            <div class="w-1/3 text-xs md:text-sm font-medium text-ink flex items-center gap-2">
+                <svg class="w-4 h-4 text-brandRed" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Chiplun, MH
             </div>
-            <!-- Center Logo -->
-            <div class="absolute left-1/2 -translate-x-1/2 top-4 md:top-6 z-50">
-                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden bg-white shadow-md border border-borderGray flex items-center justify-center hover:scale-105 transition-transform duration-500">
-                    <img src="logo.png" alt="Logo" class="w-[90%] h-[90%] object-contain">
-                </div>
+            
+            <div class="absolute left-1/2 -translate-x-1/2 top-4 md:top-5 z-50">
+                <a href="#" class="block w-16 h-16 md:w-20 md:h-20 rounded-full bg-white shadow-sm border border-divider flex items-center justify-center p-1 transition-transform hover:scale-105">
+                    <img src="logo.png" alt="3Singles Logo" class="w-full h-full object-contain">
+                </a>
             </div>
-            <!-- Right Text -->
-            <div class="w-1/3 text-right text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                Premium Menu
+            
+            <div class="w-1/3 text-right text-xs md:text-sm font-medium text-ink">
+                Open Daily
             </div>
         </div>
     </nav>
 
-    <!-- 3. MAIN LAYOUT -->
-    <main id="smooth-wrapper" class="opacity-0 pt-20 md:pt-24">
+    <main id="smooth-wrapper" class="opacity-0 pt-24 md:pt-32">
         
-        <!-- Premium Hero Section -->
-        <section class="min-h-[85vh] flex flex-col lg:flex-row items-center px-6 md:px-12 max-w-[1600px] mx-auto gap-12 lg:gap-20 py-12 lg:py-0 structural-border-bottom">
+        <section class="px-6 md:px-12 max-w-7xl mx-auto py-12 md:py-20 flex flex-col lg:flex-row items-center gap-12 lg:gap-24">
             
-            <!-- Left Hero Content (Typography & CTAs) -->
-            <div class="w-full lg:w-1/2 flex flex-col justify-center py-12 z-10">
-                
-                <!-- Trust Badges -->
-                <div class="hero-item flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandRed shadow-[0_0_8px_rgba(184,29,36,0.6)]"></span> Fresh
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandYellow shadow-[0_0_8px_rgba(243,166,51,0.6)]"></span> Hygienic
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandGreen shadow-[0_0_8px_rgba(37,154,97,0.6)]"></span> Crafted
+            <div class="w-full lg:w-1/2 flex flex-col justify-center z-10">
+                <div class="hero-item mb-6">
+                    <span class="inline-block border border-divider rounded-full px-4 py-1 text-xs font-semibold tracking-wider uppercase text-brandGreen bg-white shadow-sm">
+                        Made Fresh Today
                     </span>
                 </div>
                 
                 <div class="mask-container">
-                    <h1 class="hero-item text-6xl md:text-8xl lg:text-[7rem] font-serif font-medium leading-[1.05] tracking-tight">
-                        Taste You <br>
-                        <span class="italic text-gray-500 font-light">Can Trust.</span>
+                    <h1 class="hero-item text-5xl md:text-6xl lg:text-7xl font-serif font-semibold text-charcoal leading-tight">
+                        Welcome to <br> 3Singles Café.
                     </h1>
                 </div>
                 
-                <div class="mask-container mt-8">
-                    <p class="hero-item text-base md:text-lg max-w-xl font-light text-gray-600 leading-relaxed">
-                        A refined culinary destination in Chiplun. Elevating locally-sourced ingredients into beautifully handcrafted pizzas, premium stacked sandwiches, and authentic steamed momos.
+                <div class="mask-container mt-6">
+                    <p class="hero-item text-lg md:text-xl text-ink leading-relaxed max-w-md font-serif italic">
+                        Pizza &nbsp;•&nbsp; Sandwiches &nbsp;•&nbsp; Momos
+                    </p>
+                </div>
+                
+                <div class="mask-container mt-4">
+                    <p class="hero-item text-base text-ink leading-relaxed max-w-md">
+                        Your local spot in Chiplun for great food and good company. Everything we serve is made from scratch with care, just the way it should be.
                     </p>
                 </div>
 
-                <!-- Strong CTAs -->
-                <div class="hero-item flex flex-col sm:flex-row flex-wrap gap-4 mt-12">
-                    <a href="#menu" class="bg-brandRed text-white px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:bg-red-800 transition-all duration-300 shadow-xl shadow-brandRed/20 text-center">
+                <div class="hero-item flex flex-col sm:flex-row flex-wrap gap-4 mt-10">
+                    <a href="#menu-board" class="bg-charcoal text-white px-8 py-3.5 rounded-md text-sm font-medium hover:bg-black transition-colors shadow-sm text-center">
                         View Menu
                     </a>
-                    <a href="#" class="border-2 border-brandGreen text-brandGreen px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:bg-brandGreen hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-                        <!-- Simple SVG for WhatsApp -->
+                    <a href="#" class="bg-white border border-divider text-brandGreen px-8 py-3.5 rounded-md text-sm font-medium hover:border-brandGreen hover:bg-green-50 transition-colors flex items-center justify-center gap-2 shadow-sm">
                         <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.64.847 5.093 2.296 7.07L.606 24l5.05-1.667c1.884 1.258 4.148 1.992 6.375 1.992 6.646 0 12.03-5.385 12.03-12.03S18.677 0 12.03 0zm5.666 17.306c-.267.75-1.545 1.442-2.127 1.488-.582.046-1.354.145-4.423-1.06-3.7-1.455-6.104-5.228-6.287-5.474-.183-.245-1.5-2.002-1.5-3.82s.944-2.716 1.282-3.083c.338-.367.733-.459.977-.459.244 0 .489 0 .692.01.213.01.503-.083.788.61.285.692.977 2.385 1.06 2.568.083.183.136.398.014.643-.122.245-.183.398-.367.612-.183.214-.383.475-.55.628-.184.168-.381.352-.168.718.213.367.944 1.56 2.03 2.535 1.402 1.258 2.578 1.646 2.945 1.83.367.183.582.152.796-.092.214-.244.916-1.07.168-1.437.244-.367.61-.413.885-.306s1.74.825 2.04 1.04-.519.336-.718.52c-.199.184-.199.963-.466 1.714z"/></svg>
-                        Order on WhatsApp
+                        Order via WhatsApp
                     </a>
-                    <a href="#" class="border border-gray-300 text-gray-700 px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:border-gray-800 hover:text-gray-900 transition-all duration-300 text-center">
+                    <a href="#" class="text-ink underline decoration-divider underline-offset-4 hover:decoration-charcoal hover:text-charcoal transition-colors px-4 py-3.5 text-sm font-medium text-center">
                         Get Directions
                     </a>
                 </div>
             </div>
 
-            <!-- Right Hero Content (Premium Showcase Card) -->
-            <div class="hero-item w-full lg:w-1/2 relative h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden group shadow-2xl">
-                <!-- Cinematic Image -->
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 hero-image-mask" alt="Premium Pizza">
-                
-                <!-- Dark Elegance Gradient -->
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/40 to-transparent"></div>
-
-                <!-- Floating Flavor Dots (GSAP animated) -->
-                <div class="flavor-dot absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-brandRed shadow-[0_0_15px_rgba(184,29,36,1)]"></div>
-                <div class="flavor-dot absolute top-1/3 right-1/4 w-2 h-2 rounded-full bg-brandYellow shadow-[0_0_15px_rgba(243,166,51,1)]"></div>
-                <div class="flavor-dot absolute bottom-1/3 right-1/3 w-4 h-4 rounded-full bg-brandGreen shadow-[0_0_15px_rgba(37,154,97,1)]"></div>
-
-                <!-- Glassmorphism Highlight Card -->
-                <div class="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 bg-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-[1.5rem] text-white transform transition-transform duration-700 group-hover:-translate-y-2">
-                    <h3 class="font-serif text-2xl md:text-3xl italic mb-6">Culinary Highlights</h3>
-                    <ul class="space-y-4 md:space-y-5 text-xs md:text-sm tracking-widest uppercase font-medium">
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandYellow transition-colors">Artisanal Pizzas</span>
-                            <span class="text-brandYellow text-[10px] md:text-xs">Hand-tossed</span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandRed transition-colors">Signature Sandwiches</span>
-                            <span class="text-brandRed text-[10px] md:text-xs">Premium Stack</span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandGreen transition-colors">Authentic Momos</span>
-                            <span class="text-brandGreen text-[10px] md:text-xs">Freshly Steamed</span>
-                        </li>
-                        <li class="flex items-center justify-between group/item">
-                            <span class="group-hover/item:text-white transition-colors">Crafted Beverages</span>
-                            <span class="text-white/50 text-[10px] md:text-xs">Refreshing</span>
-                        </li>
-                    </ul>
+            <div class="hero-item w-full lg:w-1/2 relative">
+                <div class="relative rounded-xl overflow-hidden shadow-lg border border-divider">
+                    <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=1200" class="w-full h-[400px] lg:h-[600px] object-cover hover:scale-105 transition-transform duration-[2s]" alt="Fresh café sandwich">
                 </div>
+                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-paper border border-divider -z-10 rounded-lg"></div>
             </div>
         </section>
 
-        <!-- Today's Fresh Picks Section -->
-        <section id="menu" class="py-24 px-6 md:px-12 max-w-[1600px] mx-auto">
+        <section id="menu-board" class="px-6 md:px-12 max-w-5xl mx-auto py-20">
             
-            <!-- Section Header -->
-            <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-                <div class="mask-container">
-                    <h2 class="section-header text-xs uppercase tracking-[0.4em] text-gray-400 mb-4">Chef's Selection</h2>
-                    <h3 class="section-header text-4xl md:text-5xl lg:text-6xl font-serif">Today's Fresh Picks</h3>
-                </div>
-                <a href="#" class="section-header text-sm uppercase tracking-widest font-medium border-b border-dark pb-1 hover:text-brandRed hover:border-brandRed transition-colors">
-                    Explore Full Menu
-                </a>
+            <div class="text-center mb-16 mask-container">
+                <h2 class="board-item text-4xl md:text-5xl font-serif font-bold text-charcoal mb-4">From the Kitchen</h2>
+                <p class="board-item text-ink text-sm md:text-base">Prepared hot and fresh upon order.</p>
             </div>
 
-            <!-- Fresh Picks Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+            <div class="board-item menu-board rounded-lg p-8 md:p-16">
                 
-                <!-- Card 1 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Sandwich">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandRed shadow-sm">
-                            Best Seller
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    
+                    <div>
+                        <h3 class="menu-category-title text-xl font-serif font-bold text-brandRed mb-8 pb-1">Grilled Sandwiches</h3>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-lg font-semibold text-charcoal">Bhuna Chicken Club</h4>
+                                <p class="text-ink text-sm mt-1 leading-relaxed">Triple-layered artisan bread packed with spicy roasted bhuna chicken, fresh lettuce, and our house mayo.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-charcoal">Classic Veggie Delight</h4>
+                                <p class="text-ink text-sm mt-1 leading-relaxed">Crisp farm vegetables stacked with melted cheese and a touch of green chutney on grilled bread.</p>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandRed transition-colors">Bhuna Chicken Club</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">Spicy roasted chicken, fresh greens, and our proprietary house spread stacked perfectly on premium grilled artisan bread.</p>
-                </div>
 
-                <!-- Card 2 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Pizza">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandYellow shadow-sm">
-                            Chef's Pick
+                    <div>
+                        <h3 class="menu-category-title text-xl font-serif font-bold text-brandYellow mb-8 pb-1">Hand-Tossed Pizzas</h3>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-lg font-semibold text-charcoal">Smoked Pesto Margherita</h4>
+                                <p class="text-ink text-sm mt-1 leading-relaxed">Fresh daily dough topped with a rich blend of cheeses, fresh tomatoes, and house-made basil pesto.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-semibold text-charcoal">The Triple Cheese</h4>
+                                <p class="text-ink text-sm mt-1 leading-relaxed">A hearty mix of mozzarella, cheddar, and gouda melted perfectly over our rustic tomato sauce.</p>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandYellow transition-colors">Smoked Pesto Margherita</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">A vibrant blend of hand-selected mozzarella and cheddar, finished with house-made basil pesto on fresh hand-tossed dough.</p>
-                </div>
 
-                <!-- Card 3 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1625220194771-7ebedd0b4a1c?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Momos">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandGreen shadow-sm">
-                            Freshly Made
+                    <div class="md:col-span-2 md:w-1/2 md:pr-8">
+                        <h3 class="menu-category-title text-xl font-serif font-bold text-brandGreen mb-8 pb-1">Authentic Momos</h3>
+                        <div class="space-y-8">
+                            <div>
+                                <h4 class="text-lg font-semibold text-charcoal">Steamed Chicken & Veg</h4>
+                                <p class="text-ink text-sm mt-1 leading-relaxed">Delicate, hand-pleated dumplings served steaming hot alongside our signature spicy red dip.</p>
+                            </div>
                         </div>
                     </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandGreen transition-colors">Authentic Steamed Momos</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">Delicate, hand-pleated dumplings filled with premium ingredients, served steaming hot alongside our signature fiery spice dip.</p>
-                </div>
 
+                </div>
+                
+                <div class="mt-16 pt-8 border-t border-divider text-center">
+                    <p class="text-xs font-semibold tracking-widest uppercase text-ink/60">
+                        Visit the café for our full selection of beverages and specials.
+                    </p>
+                </div>
             </div>
         </section>
         
-        <!-- Elegant Footer -->
-        <footer class="py-16 px-6 border-t border-borderGray text-center mt-12">
-            <img src="logo.png" alt="3Singles Mark" class="w-12 h-12 mx-auto mb-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <p class="text-gray-400 text-xs tracking-[0.3em] uppercase">3Singles Cafe • Chiplun • Premium Experience</p>
+        <footer class="border-t border-divider py-12 px-6 text-center mt-8 bg-paper">
+            <div class="max-w-4xl mx-auto flex flex-col items-center">
+                <img src="logo.png" alt="3Singles Mark" class="w-12 h-12 mb-6 grayscale opacity-60">
+                <p class="text-ink text-sm font-medium mb-2">3Singles Café</p>
+                <p class="text-ink text-sm mb-6">Chiplun, Maharashtra</p>
+                <p class="text-ink/60 text-xs tracking-wider uppercase">© 2026 Your Local Spot</p>
+            </div>
         </footer>
     </main>
 
@@ -348,7 +314,7 @@
                 { scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" }, 
                 "-=0.3"
             );
-            // Slight glowing pulse on logo
+            
             tl.to("#real-logo", { 
                 boxShadow: "0 0 60px rgba(255,255,255,0.8), 0 10px 40px rgba(0,0,0,0.1)", 
                 duration: 1, 
@@ -366,57 +332,31 @@
                 }
             })
             
-            // 7. Reveal Website & Hero Content
+            // 7. Reveal Clean Local Website Layout
             .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
             .from(".hero-item", {
-                y: 40,
+                y: 30,
                 opacity: 0,
                 duration: 1.2,
-                stagger: 0.15,
+                stagger: 0.1,
                 ease: "power3.out"
             }, "-=0.6");
 
-            // 8. Flavor Dots Floating Animation
-            gsap.utils.toArray('.flavor-dot').forEach(dot => {
-                gsap.to(dot, {
-                    y: "random(-15, 15)",
-                    x: "random(-15, 15)",
-                    rotation: "random(-10, 10)",
-                    duration: "random(2.5, 4)",
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-            });
-
-            // 9. Scroll Reveal Logic for Fresh Picks Section
-            const headerItems = document.querySelectorAll('.section-header');
-            const headerObserver = new IntersectionObserver((entries) => {
+            // Menu Board Scroll Reveal
+            const boardItems = document.querySelectorAll('.board-item');
+            const boardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         gsap.fromTo(entry.target, 
-                            { y: 30, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-                        );
-                        headerObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            headerItems.forEach(item => headerObserver.observe(item));
-
-            const freshCards = document.querySelectorAll('.fresh-card');
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        gsap.fromTo(entry.target, 
-                            { y: 50, opacity: 0 }, 
+                            { y: 40, opacity: 0 }, 
                             { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
                         );
-                        cardObserver.unobserve(entry.target);
+                        boardObserver.unobserve(entry.target);
                     }
                 });
             }, { threshold: 0.1 });
-            freshCards.forEach(card => cardObserver.observe(card));
+            
+            boardItems.forEach(item => boardObserver.observe(item));
         });
     </script>
 </body>
