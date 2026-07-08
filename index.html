@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3Singles Café | Premium Experience</title>
+    <title>3Singles Café | Chiplun</title>
     
-    <!-- Custom, High-Impact Typography -->
+    <!-- Premium Elegant Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- GSAP for Premium Animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
     <script>
         tailwind.config = {
@@ -25,11 +24,12 @@
                 brandRed: '#b81d24',
                 brandYellow: '#f3a633',
                 brandGreen: '#259a61',
-                dark: '#0a0a0a',
-                light: '#f4f4f5'
+                dark: '#111111',
+                cream: '#fcfbf8',
+                borderGray: '#e5e5e5'
               },
               fontFamily: {
-                display: ['Oswald', 'sans-serif'],
+                serif: ['Playfair Display', 'serif'],
                 sans: ['Inter', 'sans-serif']
               }
             }
@@ -38,190 +38,144 @@
     </script>
     <style>
         body { 
-            background-color: #0a0a0a; 
-            color: #f4f4f5;
+            background-color: #fcfbf8; 
+            color: #111111;
         }
         ::-webkit-scrollbar { display: none; }
-        .mask-container { overflow: hidden; position: relative; }
-        .img-zoom { transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
-        .group:hover .img-zoom { transform: scale(1.08); }
+        .mask-container { overflow: hidden; }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
 
-    <!-- 1. CUSTOM TRAFFIC LIGHT PRELOADER -->
-    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center bg-dark">
+    <!-- 1. THE TRAFFIC LIGHT TO REAL LOGO PRELOADER -->
+    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center bg-cream">
         
-        <!-- The Traffic Light Housing -->
-        <div id="traffic-box" class="absolute w-24 h-72 rounded-full border-2 border-white/10 bg-white/5 shadow-2xl"></div>
-        
-        <!-- The Lights / Logo Circles -->
-        <div class="relative w-full h-full flex items-center justify-center">
-            
-            <div id="circle-red" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
-                <span class="logo-char opacity-0 font-display font-bold text-white text-3xl">3</span>
-            </div>
-            
-            <div id="circle-yellow" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
-                <span class="logo-char opacity-0 font-display font-bold text-white text-2xl">S</span>
-            </div>
-            
-            <div id="circle-green" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
-                <span class="logo-char opacity-0 font-display font-bold text-white text-2xl">C</span>
-            </div>
-
+        <!-- The Traffic Light Dots -->
+        <div id="traffic-dots" class="flex space-x-4 absolute z-20">
+            <div class="dot-red w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
+            <div class="dot-yellow w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
+            <div class="dot-green w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
         </div>
 
-        <!-- Hidden Loading Text -->
-        <div id="loader-text" class="absolute bottom-[20%] opacity-0 font-display text-xl md:text-2xl uppercase tracking-[0.4em] text-white/80">
-            Taste You Can Trust
+        <!-- The Real Logo (Hidden initially) -->
+        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-75">
+            <!-- Referencing the exact file name you uploaded to GitHub -->
+            <img src="1000296198_2.png" alt="3Singles Logo" class="w-48 md:w-64 drop-shadow-xl rounded-full">
         </div>
+
     </div>
 
-    <!-- 2. NAVIGATION -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-8 md:px-12 flex justify-between items-center mix-blend-difference">
-        <div class="font-display font-bold text-2xl tracking-widest uppercase">
-            3Singles<span class="text-brandRed">.</span>
+    <!-- 2. MINIMALIST NAVIGATION -->
+    <nav class="fixed top-0 w-full z-40 px-6 py-8 md:px-16 flex justify-between items-center bg-cream/90 backdrop-blur-sm border-b border-borderGray">
+        <div class="w-12 h-12 rounded-full overflow-hidden border border-gray-200">
+            <!-- Small logo in nav -->
+            <img src="1000296198_2.png" alt="Logo" class="w-full h-full object-cover">
         </div>
-        <div class="text-xs uppercase tracking-[0.2em] font-medium">Chiplun</div>
+        <div class="text-xs uppercase tracking-[0.2em] font-medium text-gray-500">Chiplun, MH</div>
     </nav>
 
-    <!-- 3. MAIN CONTENT (Editorial Layout, No Pricing) -->
-    <main id="smooth-wrapper" class="opacity-0">
+    <!-- 3. MAIN CONTENT (Clean, Typography-Driven) -->
+    <main id="smooth-wrapper" class="opacity-0 pt-32 pb-24">
         
         <!-- Hero Section -->
-        <section class="relative h-screen flex flex-col justify-end pb-24 px-6 md:px-12 z-10">
-            <div class="absolute inset-0 z-[-1] overflow-hidden">
-                <div class="absolute inset-0 bg-dark/60 z-10"></div>
-                <img class="w-full h-[120%] object-cover hero-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070" alt="Pizza">
-            </div>
-
-            <div class="max-w-5xl">
+        <section class="min-h-[70vh] flex flex-col justify-center px-6 md:px-16 max-w-5xl mx-auto">
+            <div class="space-y-6">
                 <div class="mask-container">
-                    <h1 class="hero-text text-6xl md:text-8xl lg:text-[10rem] font-display font-bold uppercase leading-[0.85] tracking-tight">
-                        Taste You
-                    </h1>
+                    <p class="hero-text text-sm uppercase tracking-[0.3em] text-brandRed font-medium">Fresh • Hygienic • Made With Care</p>
                 </div>
+                
                 <div class="mask-container">
-                    <h1 class="hero-text text-6xl md:text-8xl lg:text-[10rem] font-display font-bold uppercase leading-[0.85] tracking-tight text-brandYellow">
-                        Can Trust.
+                    <h1 class="hero-text text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] tracking-tight">
+                        Taste You <br>
+                        <span class="italic text-gray-500">Can Trust.</span>
                     </h1>
                 </div>
                 
                 <div class="mask-container mt-8">
-                    <p class="hero-subtext text-sm md:text-base max-w-md font-light tracking-wide opacity-80">
-                        A modern culinary experience in Chiplun. Elevating fresh ingredients, uncompromising hygiene, and handcrafted recipes into an art form.
+                    <p class="hero-text text-base md:text-lg max-w-xl font-light text-gray-600 leading-relaxed">
+                        A refined culinary space in Chiplun. We focus on elevating premium, locally-sourced ingredients into beautifully handcrafted pizzas, sandwiches, and momos.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- Marquee / Ticker -->
-        <div class="w-full bg-brandRed py-4 overflow-hidden border-y border-white/10 z-20 relative">
-            <div class="marquee flex whitespace-nowrap text-dark font-display text-2xl uppercase tracking-widest font-bold">
-                <span class="mx-4">• FRESH</span>
-                <span class="mx-4">• HYGIENIC</span>
-                <span class="mx-4">• MADE WITH CARE</span>
-                <span class="mx-4">• CHIPLUN'S FINEST</span>
-                <span class="mx-4">• FRESH</span>
-                <span class="mx-4">• HYGIENIC</span>
-                <span class="mx-4">• MADE WITH CARE</span>
-                <span class="mx-4">• CHIPLUN'S FINEST</span>
-            </div>
-        </div>
-
-        <!-- Editorial Menu Gallery -->
-        <section class="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
+        <!-- Clean Menu List (No images, No prices, High-End Restaurant Style) -->
+        <section class="py-24 px-6 md:px-16 max-w-4xl mx-auto border-t border-borderGray mt-12">
             
-            <div class="mask-container mb-24">
-                <h2 class="section-title text-4xl md:text-7xl font-display font-bold uppercase">The Collection</h2>
+            <div class="mb-16">
+                <h2 class="text-xs uppercase tracking-[0.3em] text-gray-400 mb-2">Our Offerings</h2>
+                <h3 class="text-3xl md:text-4xl font-serif">Curated Menu</h3>
             </div>
 
-            <div class="flex flex-col gap-32">
+            <div class="space-y-16">
                 
-                <!-- Gallery Item 1 -->
-                <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
-                    <div class="w-full md:w-1/2 order-2 md:order-1">
-                        <div class="mask-container mb-4">
-                            <h3 class="item-title text-3xl md:text-5xl font-display font-bold uppercase text-brandYellow">Bhuna Chicken Club</h3>
-                        </div>
-                        <p class="text-white/60 font-light leading-relaxed max-w-md">
-                            A towering achievement of flavor. Premium grilled bread layered with our signature spicy roasted bhuna chicken, organic elements, and a proprietary house spread. Crafted perfectly for the bold palate.
-                        </p>
-                    </div>
-                    <div class="w-full md:w-1/2 order-1 md:order-2 overflow-hidden h-[50vh] md:h-[70vh]">
-                        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=1000" alt="Sandwich" class="w-full h-full object-cover img-zoom grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                    </div>
+                <!-- Category 1 -->
+                <div>
+                    <h4 class="text-xl font-medium mb-8 text-brandRed flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-brandRed"></span> Signature Sandwiches
+                    </h4>
+                    <ul class="space-y-8">
+                        <li class="menu-item opacity-0 translate-y-4">
+                            <h5 class="text-lg font-medium">Bhuna Chicken Club</h5>
+                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Premium grilled bread layered with our signature spicy roasted bhuna chicken, fresh greens, and a proprietary house spread.</p>
+                        </li>
+                        <li class="menu-item opacity-0 translate-y-4">
+                            <h5 class="text-lg font-medium">Classic Veggie Delight</h5>
+                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Crisp, farm-fresh vegetables stacked beautifully with handcrafted artisan cheese and organic pesto.</p>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Gallery Item 2 -->
-                <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
-                    <div class="w-full md:w-1/2 overflow-hidden h-[50vh] md:h-[70vh]">
-                        <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?q=80&w=1000" alt="Pizza" class="w-full h-full object-cover img-zoom grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                    </div>
-                    <div class="w-full md:w-1/2">
-                        <div class="mask-container mb-4">
-                            <h3 class="item-title text-3xl md:text-5xl font-display font-bold uppercase text-brandGreen">Artisanal Pizza</h3>
-                        </div>
-                        <p class="text-white/60 font-light leading-relaxed max-w-md">
-                            Dough prepared fresh daily, rested to perfection. Topped with a vibrant blend of hand-selected cheeses, rich house-made sauces, and ingredients sourced at their peak freshness.
-                        </p>
-                    </div>
+                <!-- Category 2 -->
+                <div>
+                    <h4 class="text-xl font-medium mb-8 text-brandYellow flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-brandYellow"></span> Artisanal Pizzas
+                    </h4>
+                    <ul class="space-y-8">
+                        <li class="menu-item opacity-0 translate-y-4">
+                            <h5 class="text-lg font-medium">Smoked Pesto Margherita</h5>
+                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Fresh dough prepared daily, topped with a vibrant blend of hand-selected cheeses and house-made basil pesto.</p>
+                        </li>
+                    </ul>
                 </div>
 
-                <!-- Gallery Item 3 -->
-                <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
-                    <div class="w-full md:w-1/2 order-2 md:order-1">
-                        <div class="mask-container mb-4">
-                            <h3 class="item-title text-3xl md:text-5xl font-display font-bold uppercase text-brandRed">Authentic Momos</h3>
-                        </div>
-                        <p class="text-white/60 font-light leading-relaxed max-w-md">
-                            Delicate, hand-pleated dumplings available steamed to warm comfort or fried to a golden crisp. Tossed in a premium spice blend to deliver an unforgettable sensory experience.
-                        </p>
-                    </div>
-                    <div class="w-full md:w-1/2 order-1 md:order-2 overflow-hidden h-[50vh] md:h-[70vh]">
-                        <img src="https://images.unsplash.com/photo-1625220194771-7ebedd0b4a1c?q=80&w=1000" alt="Momos" class="w-full h-full object-cover img-zoom grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
-                    </div>
+                <!-- Category 3 -->
+                <div>
+                    <h4 class="text-xl font-medium mb-8 text-brandGreen flex items-center gap-4">
+                        <span class="w-8 h-[1px] bg-brandGreen"></span> Authentic Momos
+                    </h4>
+                    <ul class="space-y-8">
+                        <li class="menu-item opacity-0 translate-y-4">
+                            <h5 class="text-lg font-medium">Peri-Peri Fried Dumplings</h5>
+                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Delicate, hand-pleated dumplings fried to a golden crisp and tossed in a premium, fiery spice blend.</p>
+                        </li>
+                    </ul>
                 </div>
 
             </div>
         </section>
         
-        <!-- Footer -->
-        <footer class="py-12 border-t border-white/10 text-center text-white/30 text-xs tracking-[0.2em] uppercase">
-            Designed for 3Singles Cafe • Chiplun
+        <footer class="mt-24 pb-12 px-6 md:px-16 text-center text-gray-400 text-xs tracking-[0.2em] uppercase">
+            3Singles Cafe • Chiplun • Bespoke Web Architecture
         </footer>
     </main>
 
     <script>
         window.addEventListener('DOMContentLoaded', () => {
-            gsap.registerPlugin(ScrollTrigger);
-
             const tl = gsap.timeline();
 
-            // 1. Initial Position for Traffic Light Circles
-            gsap.set("#circle-red", { y: -90 });
-            gsap.set("#circle-yellow", { y: 0 });
-            gsap.set("#circle-green", { y: 90 });
+            // 1. Traffic Light Sequence (Coloring the borders/backgrounds)
+            tl.to(".dot-red", { backgroundColor: "#b81d24", borderColor: "#b81d24", duration: 0.3, delay: 0.5 })
+              .to(".dot-yellow", { backgroundColor: "#f3a633", borderColor: "#f3a633", duration: 0.3 })
+              .to(".dot-green", { backgroundColor: "#259a61", borderColor: "#259a61", duration: 0.3 });
 
-            // 2. The Traffic Light Sequence (Red -> Yellow -> Green)
-            tl.to("#circle-red", { backgroundColor: "#b81d24", boxShadow: "0 0 20px rgba(184,29,36,0.6)", duration: 0.3, delay: 0.5 })
-              .to("#circle-yellow", { backgroundColor: "#f3a633", boxShadow: "0 0 20px rgba(243,166,51,0.6)", duration: 0.3, delay: 0.2 })
-              .to("#circle-green", { backgroundColor: "#259a61", boxShadow: "0 0 20px rgba(37,154,97,0.6)", duration: 0.3, delay: 0.2 });
+            // 2. Dots shrink away
+            tl.to("#traffic-dots", { scale: 0, opacity: 0, duration: 0.5, ease: "back.in(1.5)" }, "+=0.3");
 
-            // 3. Fade out the Traffic Light Housing
-            tl.to("#traffic-box", { opacity: 0, scale: 0.9, duration: 0.4 }, "+=0.2");
+            // 3. Real Logo pops in perfectly
+            tl.to("#real-logo-container", { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, "-=0.1");
 
-            // 4. Morph Sequence: Break apart into the Logo
-            tl.to("#circle-red", { y: 0, x: -75, duration: 0.8, ease: "power4.inOut" }, "morph")
-              .to("#circle-yellow", { y: 0, x: 0, duration: 0.8, ease: "power4.inOut" }, "morph")
-              .to("#circle-green", { y: 0, x: 75, duration: 0.8, ease: "power4.inOut" }, "morph");
-
-            // 5. Reveal Logo Letters & Loading Text
-            tl.to(".logo-char", { opacity: 1, duration: 0.4 }, "morph+=0.4")
-              .to("#loader-text", { opacity: 1, y: -15, duration: 0.6 }, "morph+=0.4");
-
-            // 6. Slide everything up and reveal the website
+            // 4. Hold the logo for a second so they can see it, then slide the curtain up
             tl.to("#loader-wrapper", {
                 yPercent: -100,
                 duration: 1.2,
@@ -231,48 +185,33 @@
                     document.getElementById('loader-wrapper').style.display = 'none';
                 }
             })
+            
+            // 5. Reveal the clean, minimalist website
             .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
             
-            // 7. Hero Text Masked Reveal
+            // 6. Typography cascades in smoothly
             .from(".hero-text", {
-                y: "110%",
-                duration: 1.2,
-                stagger: 0.1,
-                ease: "power4.out"
-            }, "-=0.6")
-            .from(".hero-subtext", {
+                y: 40,
                 opacity: 0,
-                y: 20,
-                duration: 1,
-                ease: "power2.out"
-            }, "-=0.8");
+                duration: 1.2,
+                stagger: 0.15,
+                ease: "power3.out"
+            }, "-=0.6");
 
-            // 8. Infinite Marquee Animation
-            gsap.to(".marquee", { xPercent: -50, ease: "none", duration: 15, repeat: -1 });
-
-            // 9. Hero Parallax
-            gsap.to(".hero-img", {
-                yPercent: 30,
-                ease: "none",
-                scrollTrigger: { trigger: "section", start: "top top", end: "bottom top", scrub: true }
-            });
-
-            // 10. Scroll-Triggered Gallery Reveals
-            gsap.utils.toArray('.gallery-item').forEach(item => {
-                gsap.from(item.querySelector('.item-title'), {
-                    y: "110%", duration: 1, ease: "power4.out",
-                    scrollTrigger: { trigger: item, start: "top 80%" }
-                });
-                gsap.from(item.querySelector('p'), {
-                    y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2,
-                    scrollTrigger: { trigger: item, start: "top 80%" }
-                });
-            });
+            // 7. Simple scroll reveal for the menu list items
+            const menuItems = document.querySelectorAll('.menu-item');
             
-            gsap.from('.section-title', {
-                y: "110%", duration: 1, ease: "power4.out",
-                scrollTrigger: { trigger: '.section-title', start: "top 85%" }
-            });
+            // Create a simple intersection observer to fade in menu items as you scroll down
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.to(entry.target, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            menuItems.forEach(item => observer.observe(item));
         });
     </script>
 </body>
