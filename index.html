@@ -8,7 +8,7 @@
     <!-- Premium Elegant Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,9 +24,9 @@
                 brandRed: '#b81d24',
                 brandYellow: '#f3a633',
                 brandGreen: '#259a61',
-                dark: '#111111',
-                cream: '#fcfbf8',
-                borderGray: '#e5e5e5'
+                dark: '#0a0a0a',
+                cream: '#f8f7f4',
+                borderGray: '#dcd9d0'
               },
               fontFamily: {
                 serif: ['Playfair Display', 'serif'],
@@ -38,116 +38,147 @@
     </script>
     <style>
         body { 
-            background-color: #fcfbf8; 
-            color: #111111;
+            background-color: #f8f7f4; 
+            color: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
         }
         ::-webkit-scrollbar { display: none; }
-        .mask-container { overflow: hidden; }
+        .mask-container { overflow: hidden; position: relative; }
+        
+        /* High-end structural borders */
+        .structural-border-bottom { border-bottom: 1px solid #dcd9d0; }
+        .structural-border-right { border-right: 1px solid #dcd9d0; }
     </style>
 </head>
-<body class="font-sans antialiased overflow-x-hidden">
+<body class="font-sans overflow-x-hidden">
 
-    <!-- 1. THE TRAFFIC LIGHT TO REAL LOGO PRELOADER -->
+    <!-- 1. THE AUTHENTIC TRAFFIC LIGHT PRELOADER -->
     <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center bg-cream">
         
-        <!-- The Traffic Light Dots -->
-        <div id="traffic-dots" class="flex space-x-4 absolute z-20">
-            <div class="dot-red w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
-            <div class="dot-yellow w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
-            <div class="dot-green w-8 h-8 rounded-full border-2 border-gray-200 bg-transparent"></div>
+        <!-- Physical Traffic Light Housing -->
+        <div id="traffic-housing" class="relative z-20 w-24 h-64 bg-dark rounded-full p-4 flex flex-col justify-between items-center shadow-2xl border border-gray-800">
+            <!-- Red Light -->
+            <div id="light-red" class="w-14 h-14 rounded-full bg-[#3a080a] border-2 border-black/50 transition-colors"></div>
+            <!-- Yellow Light -->
+            <div id="light-yellow" class="w-14 h-14 rounded-full bg-[#4a320f] border-2 border-black/50 transition-colors"></div>
+            <!-- Green Light -->
+            <div id="light-green" class="w-14 h-14 rounded-full bg-[#0a2e1c] border-2 border-black/50 transition-colors"></div>
         </div>
 
-        <!-- The Real Logo (Hidden initially) -->
-        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-75">
-            <!-- Referencing the exact file name you uploaded to GitHub -->
-            <img src="logo.png" alt="3Singles Logo" class="w-48 md:w-64 drop-shadow-xl rounded-full">
+        <!-- The Real Logo (Hidden initially, waits for the green light) -->
+        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-50">
+            <!-- Ensure this matches your exact uploaded filename -->
+            <img src="1000296198_2.png" alt="3Singles Logo" class="w-56 md:w-80 lg:w-96 drop-shadow-2xl rounded-full bg-white p-2">
         </div>
-
     </div>
 
-    <!-- 2. MINIMALIST NAVIGATION -->
-    <nav class="fixed top-0 w-full z-40 px-6 py-8 md:px-16 flex justify-between items-center bg-cream/90 backdrop-blur-sm border-b border-borderGray">
-        <div class="w-12 h-12 rounded-full overflow-hidden border border-gray-200">
-            <!-- Small logo in nav -->
-            <img src="logo.png" alt="Logo" class="w-full h-full object-cover">
+    <!-- 2. EDITORIAL NAVIGATION -->
+    <nav class="fixed top-0 w-full z-40 bg-cream/80 backdrop-blur-md structural-border-bottom">
+        <div class="px-6 md:px-12 flex justify-between items-center h-20 md:h-24">
+            
+            <!-- Left Text -->
+            <div class="w-1/3 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
+                Est. Chiplun
+            </div>
+
+            <!-- Center Logo (Scales dynamically and overlaps the border beautifully) -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-4 md:top-6 z-50">
+                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden bg-white shadow-md border border-borderGray flex items-center justify-center">
+                    <img src="1000296198_2.png" alt="Logo" class="w-[90%] h-[90%] object-contain">
+                </div>
+            </div>
+
+            <!-- Right Text -->
+            <div class="w-1/3 text-right text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
+                Premium Menu
+            </div>
         </div>
-        <div class="text-xs uppercase tracking-[0.2em] font-medium text-gray-500">Chiplun, MH</div>
     </nav>
 
-    <!-- 3. MAIN CONTENT (Clean, Typography-Driven) -->
-    <main id="smooth-wrapper" class="opacity-0 pt-32 pb-24">
+    <!-- 3. ARCHITECTURAL MAIN LAYOUT -->
+    <main id="smooth-wrapper" class="opacity-0 pt-20 md:pt-24">
         
-        <!-- Hero Section -->
-        <section class="min-h-[70vh] flex flex-col justify-center px-6 md:px-16 max-w-5xl mx-auto">
-            <div class="space-y-6">
-                <div class="mask-container">
-                    <p class="hero-text text-sm uppercase tracking-[0.3em] text-brandRed font-medium">Fresh • Hygienic • Made With Care</p>
+        <!-- Hero Section (Editorial Grid) -->
+        <section class="min-h-[85vh] flex flex-col md:flex-row structural-border-bottom">
+            
+            <!-- Left Hero Content -->
+            <div class="w-full md:w-2/3 p-8 md:p-16 lg:p-24 flex flex-col justify-center structural-border-right border-borderGray">
+                <div class="mask-container mb-6">
+                    <p class="hero-text text-xs md:text-sm uppercase tracking-[0.3em] text-brandRed font-medium flex items-center gap-4">
+                        <span class="w-12 h-[1px] bg-brandRed"></span> The 3Singles Philosophy
+                    </p>
                 </div>
                 
                 <div class="mask-container">
-                    <h1 class="hero-text text-5xl md:text-7xl lg:text-8xl font-serif font-medium leading-[1.1] tracking-tight">
+                    <h1 class="hero-text text-6xl md:text-7xl lg:text-[7rem] font-serif font-medium leading-[1.05] tracking-tight">
                         Taste You <br>
-                        <span class="italic text-gray-500">Can Trust.</span>
+                        <span class="italic text-gray-500 font-light">Can Trust.</span>
                     </h1>
                 </div>
                 
-                <div class="mask-container mt-8">
-                    <p class="hero-text text-base md:text-lg max-w-xl font-light text-gray-600 leading-relaxed">
-                        A refined culinary space in Chiplun. We focus on elevating premium, locally-sourced ingredients into beautifully handcrafted pizzas, sandwiches, and momos.
+                <div class="mask-container mt-12">
+                    <p class="hero-text text-base md:text-lg max-w-lg font-light text-gray-600 leading-relaxed">
+                        A refined culinary space dedicated to elevating locally-sourced ingredients into beautifully handcrafted pizzas, stacked sandwiches, and authentic momos. 
                     </p>
+                </div>
+            </div>
+
+            <!-- Right Hero Accent (Pillars) -->
+            <div class="w-full md:w-1/3 p-8 md:p-16 flex flex-col justify-end bg-white/40">
+                <div class="space-y-12">
+                    <div class="hero-text opacity-0 translate-y-4">
+                        <h4 class="font-serif italic text-2xl mb-2 text-brandRed">Fresh.</h4>
+                        <p class="text-sm font-light text-gray-500">Ingredients sourced at their peak.</p>
+                    </div>
+                    <div class="hero-text opacity-0 translate-y-4">
+                        <h4 class="font-serif italic text-2xl mb-2 text-brandYellow">Hygienic.</h4>
+                        <p class="text-sm font-light text-gray-500">Uncompromising kitchen standards.</p>
+                    </div>
+                    <div class="hero-text opacity-0 translate-y-4">
+                        <h4 class="font-serif italic text-2xl mb-2 text-brandGreen">Crafted.</h4>
+                        <p class="text-sm font-light text-gray-500">Made with profound care.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Clean Menu List (No images, No prices, High-End Restaurant Style) -->
-        <section class="py-24 px-6 md:px-16 max-w-4xl mx-auto border-t border-borderGray mt-12">
+        <!-- Premium Menu Layout (Michelin-style typography) -->
+        <section class="py-32 px-6 md:px-16 max-w-6xl mx-auto">
             
-            <div class="mb-16">
-                <h2 class="text-xs uppercase tracking-[0.3em] text-gray-400 mb-2">Our Offerings</h2>
-                <h3 class="text-3xl md:text-4xl font-serif">Curated Menu</h3>
+            <div class="text-center mb-24 mask-container">
+                <h2 class="section-title text-xs uppercase tracking-[0.4em] text-gray-400 mb-4">The Collection</h2>
+                <h3 class="section-title text-4xl md:text-6xl font-serif">Curated Offerings</h3>
             </div>
 
-            <div class="space-y-16">
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-24 gap-y-20">
                 
-                <!-- Category 1 -->
+                <!-- Signature Sandwiches -->
                 <div>
-                    <h4 class="text-xl font-medium mb-8 text-brandRed flex items-center gap-4">
-                        <span class="w-8 h-[1px] bg-brandRed"></span> Signature Sandwiches
-                    </h4>
-                    <ul class="space-y-8">
-                        <li class="menu-item opacity-0 translate-y-4">
-                            <h5 class="text-lg font-medium">Bhuna Chicken Club</h5>
-                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Premium grilled bread layered with our signature spicy roasted bhuna chicken, fresh greens, and a proprietary house spread.</p>
+                    <h4 class="text-2xl font-serif italic mb-10 text-brandRed border-b border-borderGray pb-4">Signature Sandwiches</h4>
+                    <ul class="space-y-12">
+                        <li class="menu-item opacity-0 translate-y-6">
+                            <h5 class="text-xl font-medium tracking-wide">Bhuna Chicken Club</h5>
+                            <p class="text-sm text-gray-500 mt-3 font-light leading-relaxed">Premium grilled bread layered with our signature spicy roasted bhuna chicken, fresh greens, and a proprietary house spread.</p>
                         </li>
-                        <li class="menu-item opacity-0 translate-y-4">
-                            <h5 class="text-lg font-medium">Classic Veggie Delight</h5>
-                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Crisp, farm-fresh vegetables stacked beautifully with handcrafted artisan cheese and organic pesto.</p>
+                        <li class="menu-item opacity-0 translate-y-6">
+                            <h5 class="text-xl font-medium tracking-wide">Classic Veggie Delight</h5>
+                            <p class="text-sm text-gray-500 mt-3 font-light leading-relaxed">Crisp, farm-fresh vegetables stacked beautifully with handcrafted artisan cheese and organic pesto.</p>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Category 2 -->
+                <!-- Artisanal Pizzas -->
                 <div>
-                    <h4 class="text-xl font-medium mb-8 text-brandYellow flex items-center gap-4">
-                        <span class="w-8 h-[1px] bg-brandYellow"></span> Artisanal Pizzas
-                    </h4>
-                    <ul class="space-y-8">
-                        <li class="menu-item opacity-0 translate-y-4">
-                            <h5 class="text-lg font-medium">Smoked Pesto Margherita</h5>
-                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Fresh dough prepared daily, topped with a vibrant blend of hand-selected cheeses and house-made basil pesto.</p>
+                    <h4 class="text-2xl font-serif italic mb-10 text-brandYellow border-b border-borderGray pb-4">Artisanal Pizzas</h4>
+                    <ul class="space-y-12">
+                        <li class="menu-item opacity-0 translate-y-6">
+                            <h5 class="text-xl font-medium tracking-wide">Smoked Pesto Margherita</h5>
+                            <p class="text-sm text-gray-500 mt-3 font-light leading-relaxed">Fresh dough prepared daily, topped with a vibrant blend of hand-selected cheeses and house-made basil pesto.</p>
                         </li>
-                    </ul>
-                </div>
-
-                <!-- Category 3 -->
-                <div>
-                    <h4 class="text-xl font-medium mb-8 text-brandGreen flex items-center gap-4">
-                        <span class="w-8 h-[1px] bg-brandGreen"></span> Authentic Momos
-                    </h4>
-                    <ul class="space-y-8">
-                        <li class="menu-item opacity-0 translate-y-4">
-                            <h5 class="text-lg font-medium">Peri-Peri Fried Dumplings</h5>
-                            <p class="text-sm text-gray-500 mt-2 font-light leading-relaxed max-w-2xl">Delicate, hand-pleated dumplings fried to a golden crisp and tossed in a premium, fiery spice blend.</p>
+                        <li class="menu-item opacity-0 translate-y-6">
+                            <h5 class="text-xl font-medium tracking-wide">The Triple Cheese Frame</h5>
+                            <p class="text-sm text-gray-500 mt-3 font-light leading-relaxed">A rich, decadent blend of mozzarella, cheddar, and artisan gouda melted over our signature rustic tomato reduction.</p>
                         </li>
                     </ul>
                 </div>
@@ -155,8 +186,10 @@
             </div>
         </section>
         
-        <footer class="mt-24 pb-12 px-6 md:px-16 text-center text-gray-400 text-xs tracking-[0.2em] uppercase">
-            3Singles Cafe • Chiplun • Bespoke Web Architecture
+        <!-- Elegant Footer -->
+        <footer class="py-16 px-6 border-t border-borderGray text-center">
+            <img src="logo.png" alt="3Singles Mark" class="w-12 h-12 mx-auto mb-6 grayscale opacity-40">
+            <p class="text-gray-400 text-xs tracking-[0.3em] uppercase">3Singles Cafe • Chiplun • Bespoke Architecture</p>
         </footer>
     </main>
 
@@ -164,54 +197,95 @@
         window.addEventListener('DOMContentLoaded', () => {
             const tl = gsap.timeline();
 
-            // 1. Traffic Light Sequence (Coloring the borders/backgrounds)
-            tl.to(".dot-red", { backgroundColor: "#b81d24", borderColor: "#b81d24", duration: 0.3, delay: 0.5 })
-              .to(".dot-yellow", { backgroundColor: "#f3a633", borderColor: "#f3a633", duration: 0.3 })
-              .to(".dot-green", { backgroundColor: "#259a61", borderColor: "#259a61", duration: 0.3 });
+            // 1. Authentic Traffic Light Ignition Sequence
+            // Red turns on
+            tl.to("#light-red", { 
+                backgroundColor: "#ff2a2a", 
+                boxShadow: "0 0 30px rgba(255,42,42,0.8)", 
+                duration: 0.2, 
+                delay: 0.5 
+            })
+            // Yellow turns on
+            .to("#light-yellow", { 
+                backgroundColor: "#ffba08", 
+                boxShadow: "0 0 30px rgba(255,186,8,0.8)", 
+                duration: 0.2, 
+                delay: 0.3 
+            })
+            // Green turns on (GO!)
+            .to("#light-green", { 
+                backgroundColor: "#00ff7f", 
+                boxShadow: "0 0 40px rgba(0,255,127,1)", 
+                duration: 0.2, 
+                delay: 0.3 
+            });
 
-            // 2. Dots shrink away
-            tl.to("#traffic-dots", { scale: 0, opacity: 0, duration: 0.5, ease: "back.in(1.5)" }, "+=0.3");
+            // 2. The Housing collapses and fades
+            tl.to("#traffic-housing", { 
+                scale: 0.3, 
+                opacity: 0, 
+                duration: 0.5, 
+                ease: "power2.in" 
+            }, "+=0.3");
 
-            // 3. Real Logo pops in perfectly
-            tl.to("#real-logo-container", { opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.5)" }, "-=0.1");
+            // 3. Real Logo Explodes into view
+            tl.to("#real-logo-container", { 
+                opacity: 1, 
+                scale: 1, 
+                duration: 0.8, 
+                ease: "elastic.out(1, 0.6)" 
+            }, "-=0.1");
 
-            // 4. Hold the logo for a second so they can see it, then slide the curtain up
+            // 4. Slide up the curtain wrapper
             tl.to("#loader-wrapper", {
                 yPercent: -100,
                 duration: 1.2,
                 ease: "power4.inOut",
-                delay: 0.8,
+                delay: 1, // Let them admire the logo for 1 second
                 onComplete: () => {
                     document.getElementById('loader-wrapper').style.display = 'none';
                 }
             })
             
-            // 5. Reveal the clean, minimalist website
+            // 5. Reveal the beautiful typography
             .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
             
-            // 6. Typography cascades in smoothly
+            // 6. Staggered text reveal for hero
             .from(".hero-text", {
-                y: 40,
+                y: 50,
                 opacity: 0,
                 duration: 1.2,
                 stagger: 0.15,
                 ease: "power3.out"
             }, "-=0.6");
 
-            // 7. Simple scroll reveal for the menu list items
+            // 7. Menu Item Scroll Reveals
             const menuItems = document.querySelectorAll('.menu-item');
-            
-            // Create a simple intersection observer to fade in menu items as you scroll down
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        gsap.to(entry.target, { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" });
+                        gsap.to(entry.target, { y: 0, opacity: 1, duration: 1, ease: "power3.out" });
                         observer.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.2 });
+            }, { threshold: 0.1 });
 
             menuItems.forEach(item => observer.observe(item));
+
+            // Section Title Scroll Reveal
+            const titles = document.querySelectorAll('.section-title');
+            const titleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        gsap.fromTo(entry.target, 
+                            { y: 50, opacity: 0 }, 
+                            { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
+                        );
+                        titleObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            titles.forEach(t => titleObserver.observe(t));
         });
     </script>
 </body>
