@@ -36,7 +36,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- PREMIUM INTRO PRELOADER --- */
+        /* --- RESTORED EXPANDING SIGNAL PRELOADER --- */
         #preloader {
             position: fixed;
             top: 0;
@@ -48,32 +48,62 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            animation: revealScreen 1.2s var(--ease-custom) 1.8s forwards;
+            /* Hides the black background after the circles expand */
+            animation: hidePreloaderBg 0.1s linear 2.5s forwards;
         }
 
         .loader-dots {
             display: flex;
             gap: 1.5rem;
+            position: relative;
+            z-index: 10000;
         }
 
         .dot {
-            width: 24px;
-            height: 24px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            transform: scale(0);
-            animation: dotPop 0.6s var(--ease-out-back) forwards;
+            /* Starts off-screen */
+            transform: translateY(-100vh) scale(0.5); 
+            
+            /* 1. Drop in | 2. Pulse | 3. Expand out to reveal */
+            animation: 
+                dropIn 0.6s var(--ease-out-back) forwards,
+                pulse 0.4s ease-in-out 1.2s 2,
+                expandOut 0.7s var(--ease-custom) 2s forwards;
         }
 
-        .dot-red { background-color: var(--brand-red); animation-delay: 0.2s; }
-        .dot-yellow { background-color: var(--brand-yellow); animation-delay: 0.4s; }
-        .dot-green { background-color: var(--brand-green); animation-delay: 0.6s; }
-
-        @keyframes dotPop {
-            to { transform: scale(1); }
+        /* Staggered drop-ins, but synced pulsing and expanding */
+        .dot-red { 
+            background-color: var(--brand-red); 
+            animation-delay: 0s, 1s, 2s; 
+        }
+        .dot-yellow { 
+            background-color: var(--brand-yellow); 
+            animation-delay: 0.15s, 1s, 2s; 
+        }
+        .dot-green { 
+            background-color: var(--brand-green); 
+            animation-delay: 0.3s, 1s, 2s; 
         }
 
-        @keyframes revealScreen {
-            to { transform: translateY(-100%); }
+        @keyframes dropIn {
+            to { transform: translateY(0) scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(0) scale(1.2); }
+        }
+
+        @keyframes expandOut {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            /* Expands massively to cover screen, then fades out */
+            100% { transform: translateY(0) scale(150); opacity: 0; }
+        }
+
+        @keyframes hidePreloaderBg {
+            to { visibility: hidden; opacity: 0; z-index: -1; }
         }
 
         /* --- STRUCTURAL SKELETON PLACEHOLDER --- */
@@ -85,7 +115,6 @@
             border-radius: 12px;
         }
 
-        /* Animated shimmer effect that stays active until the real asset mounts */
         .asset-wrapper::before {
             content: '';
             position: absolute;
@@ -109,13 +138,8 @@
             z-index: 2;
         }
 
-        /* Add this class via JS or native onload once images are verified */
-        .asset-wrapper.loaded::before {
-            display: none;
-        }
-        .asset-wrapper.loaded img {
-            opacity: 1;
-        }
+        .asset-wrapper.loaded::before { display: none; }
+        .asset-wrapper.loaded img { opacity: 1; }
 
         @keyframes shimmer {
             0% { background-position: -200% 0; }
@@ -151,9 +175,7 @@
             .hero-grid { grid-template-columns: 1fr; gap: 2rem; padding-bottom: 4rem; }
         }
 
-        .hero-content {
-            padding-right: 5%;
-        }
+        .hero-content { padding-right: 5%; }
 
         .hero-tagline {
             font-size: 0.85rem;
@@ -180,9 +202,8 @@
             max-width: 440px;
         }
 
-        /* Locked Layout Image Frame */
         .hero-media-frame {
-            aspect-ratio: 4 / 5; /* Forces the strict vertical framing ideal for food closeups */
+            aspect-ratio: 4 / 5;
             transform: rotate(1deg);
             box-shadow: 0 30px 60px -15px rgba(0,0,0,0.08);
             transition: transform 0.8s var(--ease-custom);
@@ -192,7 +213,6 @@
             transform: rotate(0deg) scale(1.02);
         }
 
-        /* Modern Custom Action Button */
         .cta-btn {
             display: inline-flex;
             align-items: center;
@@ -214,7 +234,6 @@
 </head>
 <body>
 
-    <!-- Premium Brand Loading Sequence -->
     <div id="preloader">
         <div class="loader-dots">
             <div class="dot dot-red"></div>
@@ -223,7 +242,6 @@
         </div>
     </div>
 
-    <!-- Main Clean Layout Canvas -->
     <header>
         <div class="brand-logo">3singles<span style="color: var(--brand-green);">.</span>café</div>
     </header>
@@ -237,8 +255,6 @@
                 <a href="#" class="cta-btn">Explore Menu Drops</a>
             </div>
             
-            <!-- Bulletproof Media Shell -->
-            <!-- The aspect-ratio property guarantees the grid will never collapse or distort regardless of the placeholder file injected inside -->
             <div class="asset-wrapper hero-media-frame">
                 <img src="your-placeholder-file.jpg" alt="Premium Food Presentation" onload="this.parentElement.classList.add('loaded')">
             </div>
