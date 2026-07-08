@@ -41,32 +41,41 @@
             background-color: #0a0a0a; 
             color: #f4f4f5;
         }
-        /* Hide scrollbar for a seamless app-like feel */
         ::-webkit-scrollbar { display: none; }
-        
-        /* Utility classes for GSAP masked reveals */
-        .mask-container {
-            overflow: hidden;
-            position: relative;
-        }
-        
-        /* Slow zoom effect for images */
-        .img-zoom {
-            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .group:hover .img-zoom {
-            transform: scale(1.08);
-        }
+        .mask-container { overflow: hidden; position: relative; }
+        .img-zoom { transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .group:hover .img-zoom { transform: scale(1.08); }
     </style>
 </head>
 <body class="font-sans antialiased overflow-x-hidden">
 
-    <!-- 1. CINEMATIC PRELOADER -->
-    <div id="loader-wrapper" class="fixed inset-0 z-50 flex flex-col pointer-events-none">
-        <div class="loader-panel flex-1 bg-brandRed w-full transform origin-top"></div>
-        <div class="loader-panel flex-1 bg-brandYellow w-full transform origin-top"></div>
-        <div class="loader-panel flex-1 bg-brandGreen w-full transform origin-top"></div>
-        <div class="loader-panel flex-1 bg-dark w-full transform origin-top"></div>
+    <!-- 1. CUSTOM TRAFFIC LIGHT PRELOADER -->
+    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center bg-dark">
+        
+        <!-- The Traffic Light Housing -->
+        <div id="traffic-box" class="absolute w-24 h-72 rounded-full border-2 border-white/10 bg-white/5 shadow-2xl"></div>
+        
+        <!-- The Lights / Logo Circles -->
+        <div class="relative w-full h-full flex items-center justify-center">
+            
+            <div id="circle-red" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
+                <span class="logo-char opacity-0 font-display font-bold text-white text-3xl">3</span>
+            </div>
+            
+            <div id="circle-yellow" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
+                <span class="logo-char opacity-0 font-display font-bold text-white text-2xl">S</span>
+            </div>
+            
+            <div id="circle-green" class="absolute w-16 h-16 rounded-full bg-white/10 flex items-center justify-center shadow-lg">
+                <span class="logo-char opacity-0 font-display font-bold text-white text-2xl">C</span>
+            </div>
+
+        </div>
+
+        <!-- Hidden Loading Text -->
+        <div id="loader-text" class="absolute bottom-[20%] opacity-0 font-display text-xl md:text-2xl uppercase tracking-[0.4em] text-white/80">
+            Taste You Can Trust
+        </div>
     </div>
 
     <!-- 2. NAVIGATION -->
@@ -77,25 +86,24 @@
         <div class="text-xs uppercase tracking-[0.2em] font-medium">Chiplun</div>
     </nav>
 
-    <!-- 3. MAIN CONTENT -->
+    <!-- 3. MAIN CONTENT (Editorial Layout, No Pricing) -->
     <main id="smooth-wrapper" class="opacity-0">
         
         <!-- Hero Section -->
         <section class="relative h-screen flex flex-col justify-end pb-24 px-6 md:px-12 z-10">
-            <!-- Background Image with Parallax setup -->
             <div class="absolute inset-0 z-[-1] overflow-hidden">
-                <div class="absolute inset-0 bg-dark/60 z-10"></div> <!-- Dark overlay -->
+                <div class="absolute inset-0 bg-dark/60 z-10"></div>
                 <img class="w-full h-[120%] object-cover hero-img" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070" alt="Pizza">
             </div>
 
             <div class="max-w-5xl">
                 <div class="mask-container">
-                    <h1 class="hero-text text-5xl md:text-8xl lg:text-9xl font-display font-bold uppercase leading-[0.85] tracking-tight">
+                    <h1 class="hero-text text-6xl md:text-8xl lg:text-[10rem] font-display font-bold uppercase leading-[0.85] tracking-tight">
                         Taste You
                     </h1>
                 </div>
                 <div class="mask-container">
-                    <h1 class="hero-text text-5xl md:text-8xl lg:text-9xl font-display font-bold uppercase leading-[0.85] tracking-tight text-brandYellow">
+                    <h1 class="hero-text text-6xl md:text-8xl lg:text-[10rem] font-display font-bold uppercase leading-[0.85] tracking-tight text-brandYellow">
                         Can Trust.
                     </h1>
                 </div>
@@ -114,15 +122,15 @@
                 <span class="mx-4">• FRESH</span>
                 <span class="mx-4">• HYGIENIC</span>
                 <span class="mx-4">• MADE WITH CARE</span>
-                <span class="mx-4">• CHIPLUN's FINEST</span>
+                <span class="mx-4">• CHIPLUN'S FINEST</span>
                 <span class="mx-4">• FRESH</span>
                 <span class="mx-4">• HYGIENIC</span>
                 <span class="mx-4">• MADE WITH CARE</span>
-                <span class="mx-4">• CHIPLUN's FINEST</span>
+                <span class="mx-4">• CHIPLUN'S FINEST</span>
             </div>
         </div>
 
-        <!-- Editorial Menu Gallery (No Prices, No generic cards) -->
+        <!-- Editorial Menu Gallery -->
         <section class="py-32 px-6 md:px-12 max-w-[1400px] mx-auto">
             
             <div class="mask-container mb-24">
@@ -131,7 +139,7 @@
 
             <div class="flex flex-col gap-32">
                 
-                <!-- Gallery Item 1 (Image Right) -->
+                <!-- Gallery Item 1 -->
                 <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
                     <div class="w-full md:w-1/2 order-2 md:order-1">
                         <div class="mask-container mb-4">
@@ -146,7 +154,7 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 2 (Image Left) -->
+                <!-- Gallery Item 2 -->
                 <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
                     <div class="w-full md:w-1/2 overflow-hidden h-[50vh] md:h-[70vh]">
                         <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89ef734?q=80&w=1000" alt="Pizza" class="w-full h-full object-cover img-zoom grayscale-[20%] group-hover:grayscale-0 transition-all duration-700">
@@ -161,7 +169,7 @@
                     </div>
                 </div>
 
-                <!-- Gallery Item 3 (Image Right) -->
+                <!-- Gallery Item 3 -->
                 <div class="gallery-item flex flex-col md:flex-row items-center gap-12 md:gap-24 group">
                     <div class="w-full md:w-1/2 order-2 md:order-1">
                         <div class="mask-container mb-4">
@@ -186,27 +194,46 @@
     </main>
 
     <script>
-        // GSAP Premium Animation Logic
         window.addEventListener('DOMContentLoaded', () => {
             gsap.registerPlugin(ScrollTrigger);
 
             const tl = gsap.timeline();
 
-            // 1. Cinematic Preloader Wipe
-            // The panels slide up, staggering slightly, revealing the site
-            tl.to(".loader-panel", {
-                scaleY: 0,
+            // 1. Initial Position for Traffic Light Circles
+            gsap.set("#circle-red", { y: -90 });
+            gsap.set("#circle-yellow", { y: 0 });
+            gsap.set("#circle-green", { y: 90 });
+
+            // 2. The Traffic Light Sequence (Red -> Yellow -> Green)
+            tl.to("#circle-red", { backgroundColor: "#b81d24", boxShadow: "0 0 20px rgba(184,29,36,0.6)", duration: 0.3, delay: 0.5 })
+              .to("#circle-yellow", { backgroundColor: "#f3a633", boxShadow: "0 0 20px rgba(243,166,51,0.6)", duration: 0.3, delay: 0.2 })
+              .to("#circle-green", { backgroundColor: "#259a61", boxShadow: "0 0 20px rgba(37,154,97,0.6)", duration: 0.3, delay: 0.2 });
+
+            // 3. Fade out the Traffic Light Housing
+            tl.to("#traffic-box", { opacity: 0, scale: 0.9, duration: 0.4 }, "+=0.2");
+
+            // 4. Morph Sequence: Break apart into the Logo
+            tl.to("#circle-red", { y: 0, x: -75, duration: 0.8, ease: "power4.inOut" }, "morph")
+              .to("#circle-yellow", { y: 0, x: 0, duration: 0.8, ease: "power4.inOut" }, "morph")
+              .to("#circle-green", { y: 0, x: 75, duration: 0.8, ease: "power4.inOut" }, "morph");
+
+            // 5. Reveal Logo Letters & Loading Text
+            tl.to(".logo-char", { opacity: 1, duration: 0.4 }, "morph+=0.4")
+              .to("#loader-text", { opacity: 1, y: -15, duration: 0.6 }, "morph+=0.4");
+
+            // 6. Slide everything up and reveal the website
+            tl.to("#loader-wrapper", {
+                yPercent: -100,
                 duration: 1.2,
-                stagger: 0.1,
                 ease: "power4.inOut",
+                delay: 0.8,
                 onComplete: () => {
                     document.getElementById('loader-wrapper').style.display = 'none';
                 }
             })
-            // Make site visible exactly as panels wipe away
-            .set("#smooth-wrapper", { opacity: 1 }, "-=1")
+            .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
             
-            // 2. Hero Text Masked Reveal (The "Award Winning" effect)
+            // 7. Hero Text Masked Reveal
             .from(".hero-text", {
                 y: "110%",
                 duration: 1.2,
@@ -220,64 +247,31 @@
                 ease: "power2.out"
             }, "-=0.8");
 
-            // 3. Infinite Marquee Animation
-            gsap.to(".marquee", {
-                xPercent: -50,
-                ease: "none",
-                duration: 15,
-                repeat: -1
-            });
+            // 8. Infinite Marquee Animation
+            gsap.to(".marquee", { xPercent: -50, ease: "none", duration: 15, repeat: -1 });
 
-            // 4. Hero Parallax Scroll Effect
+            // 9. Hero Parallax
             gsap.to(".hero-img", {
                 yPercent: 30,
                 ease: "none",
-                scrollTrigger: {
-                    trigger: "section",
-                    start: "top top",
-                    end: "bottom top",
-                    scrub: true
-                }
+                scrollTrigger: { trigger: "section", start: "top top", end: "bottom top", scrub: true }
             });
 
-            // 5. Scroll-Triggered Gallery Reveals
+            // 10. Scroll-Triggered Gallery Reveals
             gsap.utils.toArray('.gallery-item').forEach(item => {
-                const title = item.querySelector('.item-title');
-                
-                // Mask reveal for gallery titles
-                gsap.from(title, {
-                    y: "110%",
-                    duration: 1,
-                    ease: "power4.out",
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%", // Triggers when top of element hits 80% of screen
-                    }
+                gsap.from(item.querySelector('.item-title'), {
+                    y: "110%", duration: 1, ease: "power4.out",
+                    scrollTrigger: { trigger: item, start: "top 80%" }
                 });
-
-                // Subtle fade up for paragraphs
                 gsap.from(item.querySelector('p'), {
-                    y: 30,
-                    opacity: 0,
-                    duration: 1,
-                    ease: "power3.out",
-                    delay: 0.2,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%",
-                    }
+                    y: 30, opacity: 0, duration: 1, ease: "power3.out", delay: 0.2,
+                    scrollTrigger: { trigger: item, start: "top 80%" }
                 });
             });
             
-            // 6. Section Title Reveal
             gsap.from('.section-title', {
-                y: "110%",
-                duration: 1,
-                ease: "power4.out",
-                scrollTrigger: {
-                    trigger: '.section-title',
-                    start: "top 85%"
-                }
+                y: "110%", duration: 1, ease: "power4.out",
+                scrollTrigger: { trigger: '.section-title', start: "top 85%" }
             });
         });
     </script>
