@@ -63,12 +63,159 @@
     </div>
   </div>
 
-  <main class="site-preview">
-    <section class="site-card">
-      <img src="assets/logo-trimmed-transparent.png" alt="3Singles Cafe Chiplun logo" />
-      <h1>Welcome to 3Singles Cafe</h1>
-      <p>This is a demo handoff version of the premium loader. Replace this section with the actual homepage and keep the loader wrapper intact.</p>
+  <main class="site-preview" id="top">
+    <nav class="nav-shell" aria-label="Primary navigation">
+      <a class="nav-brand" href="#top" aria-label="3Singles Cafe home">
+        <img src="assets/logo-trimmed-transparent.png" alt="3Singles Cafe Chiplun logo" />
+      </a>
+      <div class="nav-links">
+        <a href="#specials">Specials</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#visit">Location</a>
+      </div>
+      <a class="nav-cta" href="https://www.instagram.com/3singles.cafe/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+
+    <section class="hero section-reveal" aria-label="3Singles Cafe cinematic hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> 3Singles Cafe • Chiplun</span>
+        <h1>Crafted coffee, comfort food and cozy cafe moments.</h1>
+        <p>Step into a warm little cafe experience made for chilled coffees, cheesy bites, quick cravings and feel-good conversations.</p>
+        <div class="hero-actions" aria-label="Cafe action buttons">
+          <a class="btn primary" href="https://www.instagram.com/3singles.cafe/" target="_blank" rel="noopener">View Instagram</a>
+          <a class="btn soft" href="https://www.google.com/maps/search/?api=1&query=3Singles%20Cafe%20Chiplun" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="quick-ctas">
+          <a href="#zomato">Zomato</a>
+          <a href="#swiggy">Swiggy</a>
+          <a href="#visit">Maps</a>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-label="Cafe food photo slideshow">
+        <div class="photo-frame">
+          <img class="hero-slide is-active" src="assets/oreo-coffee.png" alt="Oreo coffee at 3Singles Cafe" />
+          <img class="hero-slide" src="assets/garlic-pizza-table.png" alt="Cheesy garlic pizza at 3Singles Cafe" />
+          <img class="hero-slide" src="assets/cheese-pizza-box.png" alt="Cheese pizza from 3Singles Cafe" />
+          <img class="hero-slide" src="assets/red-mocktail.png" alt="Refreshing red mocktail at 3Singles Cafe" />
+          <div class="frame-gradient"></div>
+          <div class="slide-caption">
+            <span>Now serving</span>
+            <strong id="slideTitle">Oreo Coffee</strong>
+          </div>
+        </div>
+        <div class="hero-note">
+          <span>Fresh cafe picks</span>
+          <strong>crafted for your cravings</strong>
+        </div>
+      </div>
     </section>
+
+    <section class="specials section-reveal" id="specials">
+      <div class="section-heading">
+        <span class="eyebrow"><i></i> Chef’s Recommended</span>
+        <h2>Most-loved picks from the cafe table.</h2>
+        <p>Featured favourites styled with the same warm, cinematic feel as the brand intro.</p>
+      </div>
+      <div class="special-grid">
+        <article class="special-card featured-card">
+          <img src="assets/oreo-coffee.png" alt="Oreo Coffee" />
+          <div>
+            <span class="card-tag red">Cafe Favourite</span>
+            <h3>Oreo Coffee</h3>
+            <p>Creamy, chilled and rich with Oreo crunch.</p>
+          </div>
+        </article>
+        <article class="special-card featured-card">
+          <img src="assets/garlic-pizza-table.png" alt="Cheesy Garlic Pizza" />
+          <div>
+            <span class="card-tag yellow">Best Seller</span>
+            <h3>Cheesy Garlic Pizza</h3>
+            <p>Soft, loaded and perfect for sharing.</p>
+          </div>
+        </article>
+        <article class="special-card featured-card">
+          <img src="assets/red-mocktail.png" alt="Refreshing Mocktail" />
+          <div>
+            <span class="card-tag green">Refreshing Pick</span>
+            <h3>Signature Mocktail</h3>
+            <p>Bright, chilled and made for cafe evenings.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="reviews section-reveal" id="reviews">
+      <div class="review-panel">
+        <div class="section-heading compact">
+          <span class="eyebrow"><i></i> Google Reviews</span>
+          <h2>Loved by cafe visitors.</h2>
+          <p>Use this section to show real Google review highlights once the cafe shares the exact review text.</p>
+          <a class="btn soft" href="https://www.google.com/maps/search/?api=1&query=3Singles%20Cafe%20Chiplun" target="_blank" rel="noopener">Read Google Reviews</a>
+        </div>
+        <div class="review-cards">
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“Cozy place, great coffee and a nice vibe for quick bites.”</p>
+            <strong>Google Visitor</strong>
+          </article>
+          <article class="review-card">
+            <div class="stars">★★★★★</div>
+            <p>“The pizza and chilled coffee combo is worth trying.”</p>
+            <strong>Cafe Guest</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band section-reveal" aria-label="Order and social links">
+      <div>
+        <span class="eyebrow"><i></i> Craving something?</span>
+        <h2>Choose how you want to connect.</h2>
+      </div>
+      <div class="cta-grid">
+        <a class="connect-card instagram" href="https://www.instagram.com/3singles.cafe/" target="_blank" rel="noopener">
+          <span>Instagram</span>
+          <strong>See latest posts and cafe updates</strong>
+        </a>
+        <a class="connect-card zomato" id="zomato" href="#" aria-label="Add Zomato link here">
+          <span>Zomato</span>
+          <strong>Add Zomato ordering link</strong>
+        </a>
+        <a class="connect-card swiggy" id="swiggy" href="#" aria-label="Add Swiggy link here">
+          <span>Swiggy</span>
+          <strong>Add Swiggy ordering link</strong>
+        </a>
+      </div>
+    </section>
+
+    <section class="visit section-reveal" id="visit">
+      <div class="visit-copy">
+        <span class="eyebrow"><i></i> Visit Us</span>
+        <h2>Find 3Singles Cafe in Chiplun.</h2>
+        <p>Tap below to open the cafe location in Google Maps and start navigation.</p>
+        <div class="visit-details">
+          <span>📍 Chiplun, Maharashtra</span>
+          <span>☕ Coffee • Pizza • Snacks</span>
+        </div>
+        <a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=3Singles%20Cafe%20Chiplun" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+      <a class="map-card" href="https://www.google.com/maps/search/?api=1&query=3Singles%20Cafe%20Chiplun" target="_blank" rel="noopener" aria-label="Open 3Singles Cafe location in Google Maps">
+        <div class="map-grid"></div>
+        <div class="map-pin">3Singles Cafe<br><span>Chiplun</span></div>
+      </a>
+    </section>
+
+    <footer class="footer">
+      <img src="assets/logo-trimmed-transparent.png" alt="3Singles Cafe Chiplun logo" />
+      <p>3Singles Cafe, Chiplun — Coffee • Pizza • Snacks • Moments</p>
+      <div>
+        <a href="https://www.instagram.com/3singles.cafe/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#zomato">Zomato</a>
+        <a href="#swiggy">Swiggy</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=3Singles%20Cafe%20Chiplun" target="_blank" rel="noopener">Maps</a>
+      </div>
+    </footer>
   </main>
 
   <script src="script.js"></script>
