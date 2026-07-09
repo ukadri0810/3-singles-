@@ -1,41 +1,47 @@
-const loader = document.getElementById('loader');
-const page = document.getElementById('page');
-const shine = document.getElementById('shine');
 
-let start = null;
-let done = false;
-const duration = 3200;
+const stage = document.getElementById('stage');
+const timeline = [
+  [80, () => stage.classList.add('phase-signal')],
+  [550, () => stage.classList.add('light-red')],
+  [1000, () => stage.classList.add('light-yellow')],
+  [1450, () => stage.classList.add('light-green')],
+  [2300, () => stage.classList.add('phase-rotate')],
+  [3050, () => stage.classList.add('phase-morph')],
+  [3550, () => stage.classList.add('phase-logo')],
+  [4050, () => stage.classList.add('phase-copy')],
+  [4300, () => stage.classList.add('phase-progress')],
+  [6700, () => document.body.classList.add('is-loaded')]
+];
+window.addEventListener('load', () => {
+  timeline.forEach(([delay, action]) => window.setTimeout(action, delay));
+});
 
-function easeOutQuint(t){ return 1 - Math.pow(1 - t, 5); }
-function easeInOutCubic(t){ return t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3)/2; }
-
-function tick(now){
-  if(!start) start = now;
-  const elapsed = now - start;
-  const p = Math.min(elapsed / duration, 1);
-
-  const revealStart = Math.max(0, (p - .08) / .56);
-  const reveal = easeInOutCubic(Math.min(revealStart, 1)) * 100;
-  const progress = easeOutQuint(p) * 100;
-
-  document.documentElement.style.setProperty('--reveal-x', reveal + '%');
-  document.documentElement.style.setProperty('--progress', progress + '%');
-
-  if(p > .55 && !shine.classList.contains('run')) shine.classList.add('run');
-
-  if(p < 1){
-    requestAnimationFrame(tick);
-    return;
-  }
-
-  if(!done){
-    done = true;
-    page.classList.add('show');
-    setTimeout(() => {
-      loader.classList.add('hide');
-      document.body.style.overflow = 'auto';
-    }, 520);
-  }
+// Premium homepage interactions: cinematic photo rotation + soft reveal on scroll.
+const slides = Array.from(document.querySelectorAll('.hero-slide'));
+const slideTitle = document.getElementById('slideTitle');
+const slideNames = ['Oreo Coffee', 'Cheesy Garlic Pizza', 'Cheese Pizza', 'Signature Mocktail'];
+let currentSlide = 0;
+function showSlide(index) {
+  slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+  if (slideTitle) slideTitle.textContent = slideNames[index] || 'Cafe Favourite';
+}
+if (slides.length) {
+  window.setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 4200);
 }
 
-window.addEventListener('load', () => requestAnimationFrame(tick));
+const revealItems = document.querySelectorAll('.section-reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.16 });
+revealItems.forEach((item) => revealObserver.observe(item));
+window.setTimeout(() => {
+  document.querySelector('.hero')?.classList.add('is-visible');
+}, 6900);
