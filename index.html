@@ -1,423 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3Singles Café | Premium Experience</title>
-    
-    <!-- Premium Elegant Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- GSAP for Premium Animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              colors: {
-                brandRed: '#b81d24',
-                brandYellow: '#f3a633',
-                brandGreen: '#259a61',
-                dark: '#0a0a0a',
-                cream: '#f8f7f4',
-                borderGray: '#dcd9d0'
-              },
-              fontFamily: {
-                serif: ['Playfair Display', 'serif'],
-                sans: ['Inter', 'sans-serif']
-              }
-            }
-          }
-        }
-    </script>
-    <style>
-        body { 
-            background-color: #f8f7f4; 
-            color: #0a0a0a;
-            -webkit-font-smoothing: antialiased;
-        }
-        ::-webkit-scrollbar { display: none; }
-        .mask-container { overflow: hidden; position: relative; }
-        
-        .structural-border-bottom { border-bottom: 1px solid #dcd9d0; }
-
-        /* --- PREMIUM PRELOADER CSS --- */
-        .ambient-glow {
-            background-color: #f8f7f4;
-            background-image: radial-gradient(circle at center, rgba(255,255,255,0.9) 0%, #f8f7f4 70%);
-        }
-
-        .metal-housing {
-            background: linear-gradient(145deg, #2c2e30, #0a0a0a);
-            box-shadow: 
-                inset 2px 2px 6px rgba(255, 255, 255, 0.15), 
-                inset -2px -2px 6px rgba(0, 0, 0, 0.9),
-                0 25px 50px -12px rgba(0,0,0,0.5);
-            border: 1px solid #222;
-        }
-
-        .signal-light {
-            position: relative;
-            background-color: #111;
-            box-shadow: inset 0px 6px 12px rgba(0, 0, 0, 0.9);
-            border: 2px solid #080808;
-            overflow: hidden;
-            border-radius: 50%;
-        }
-
-        /* Glass Reflection / Shine */
-        .signal-light::after {
-            content: '';
-            position: absolute;
-            top: 4%; left: 15%; width: 70%; height: 35%;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.4), rgba(255,255,255,0));
-            border-radius: 50%;
-            pointer-events: none;
-            filter: blur(1px);
-        }
-        
-        #real-logo {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            background: white;
-        }
-
-        /* Hero Image Gradient Mask */
-        .hero-image-mask {
-            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>3Singles Cafe | Premium Loader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="font-sans overflow-x-hidden">
+<body>
+  <main class="site-shell" aria-label="3Singles Cafe demo page">
+    <section class="hero">
+      <nav class="nav">
+        <img src="assets/logo-transparent.png" alt="3Singles Cafe Chiplun" class="nav-logo" />
+        <a href="#" class="nav-cta">Visit Cafe</a>
+      </nav>
+      <div class="hero-copy">
+        <p class="eyebrow">Chiplun's warm cafe corner</p>
+        <h1>Fresh brews, soft bites, and conversations worth pausing for.</h1>
+        <p>Premium website demo with a custom motion-led first impression.</p>
+      </div>
+    </section>
+  </main>
 
-    <!-- 1. CINEMATIC TRAFFIC LIGHT PRELOADER -->
-    <div id="loader-wrapper" class="fixed inset-0 z-50 flex items-center justify-center ambient-glow">
-        
-        <div class="housing-container relative flex flex-col items-center">
-            <!-- Realistic Traffic Light Housing -->
-            <div id="traffic-housing" class="relative z-20 w-24 h-64 metal-housing rounded-full p-4 flex flex-col justify-between items-center">
-                <!-- Red Light -->
-                <div id="light-red" class="w-14 h-14 signal-light"></div>
-                <!-- Yellow Light -->
-                <div id="light-yellow" class="w-14 h-14 signal-light"></div>
-                <!-- Green Light -->
-                <div id="light-green" class="w-14 h-14 signal-light"></div>
-            </div>
+  <section class="loader" id="loader" aria-label="Loading 3Singles Cafe website">
+    <div class="grain" aria-hidden="true"></div>
 
-            <!-- Preloader Status Text -->
-            <div id="loader-status" class="absolute top-[110%] w-64 h-8 flex justify-center items-center">
-                <span id="text-red" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandRed opacity-0">Preparing freshness</span>
-                <span id="text-yellow" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandYellow opacity-0">Warming flavours</span>
-                <span id="text-green" class="absolute text-xs uppercase tracking-[0.2em] font-medium text-brandGreen opacity-0">Welcome to 3Singles</span>
-            </div>
+    <svg class="line-art line-art-left" viewBox="0 0 220 220" aria-hidden="true">
+      <path d="M48 142C80 67 151 42 194 28C183 77 154 134 77 169C63 175 49 167 48 142Z" />
+      <path d="M78 154C104 111 141 77 187 38" />
+      <path d="M79 101C54 91 43 68 42 44C72 51 91 68 100 96" />
+    </svg>
+
+    <svg class="line-art line-art-right" viewBox="0 0 230 230" aria-hidden="true">
+      <path d="M37 157C76 90 143 63 204 50C191 106 156 168 81 191C57 198 36 184 37 157Z" />
+      <path d="M70 177C104 127 150 87 204 50" />
+      <path d="M111 105C88 86 79 60 83 34C113 47 134 68 141 100" />
+    </svg>
+
+    <div class="bean bean-one" aria-hidden="true"></div>
+    <div class="bean bean-two" aria-hidden="true"></div>
+    <div class="bean bean-three" aria-hidden="true"></div>
+
+    <div class="loader-center">
+      <div class="traffic-stage" aria-hidden="true">
+        <div class="traffic-signal">
+          <span class="lamp lamp-red"></span>
+          <span class="lamp lamp-yellow"></span>
+          <span class="lamp lamp-green"></span>
         </div>
+      </div>
 
-        <!-- The Real Logo Reveal -->
-        <div id="real-logo-container" class="absolute z-10 opacity-0 scale-[0.9] flex flex-col items-center justify-center">
-            <img id="real-logo" src="logo.png" alt="3Singles Logo" class="w-56 md:w-80 lg:w-96 rounded-full p-2">
-        </div>
+      <div class="disc-row" aria-hidden="true">
+        <span class="disc red"></span>
+        <span class="disc yellow"></span>
+        <span class="disc green"></span>
+      </div>
+
+      <div class="final-brand">
+        <div class="logo-glow" aria-hidden="true"></div>
+        <img class="brand-logo" src="assets/logo-transparent.png" alt="3Singles Cafe Chiplun" />
+        <div class="steam steam-a" aria-hidden="true"></div>
+        <div class="steam steam-b" aria-hidden="true"></div>
+        <div class="steam steam-c" aria-hidden="true"></div>
+      </div>
+
+      <div class="loader-caption" aria-live="polite">
+        <span>Brewing Happiness...</span>
+      </div>
+
+      <div class="progress-track" aria-hidden="true">
+        <span class="progress-fill"></span>
+        <span class="progress-dot"></span>
+      </div>
     </div>
+  </section>
 
-    <!-- 2. EDITORIAL NAVIGATION -->
-    <nav class="fixed top-0 w-full z-40 bg-cream/90 backdrop-blur-md structural-border-bottom">
-        <div class="px-6 md:px-12 max-w-[1600px] mx-auto flex justify-between items-center h-20 md:h-24">
-            <!-- Left Text -->
-            <div class="w-1/3 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                Est. Chiplun
-            </div>
-            <!-- Center Logo -->
-            <div class="absolute left-1/2 -translate-x-1/2 top-4 md:top-6 z-50">
-                <div class="w-16 h-16 md:w-24 md:h-24 rounded-full overflow-hidden bg-white shadow-md border border-borderGray flex items-center justify-center hover:scale-105 transition-transform duration-500">
-                    <img src="logo.png" alt="Logo" class="w-[90%] h-[90%] object-contain">
-                </div>
-            </div>
-            <!-- Right Text -->
-            <div class="w-1/3 text-right text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                Premium Menu
-            </div>
-        </div>
-    </nav>
-
-    <!-- 3. MAIN LAYOUT -->
-    <main id="smooth-wrapper" class="opacity-0 pt-20 md:pt-24">
-        
-        <!-- Premium Hero Section -->
-        <section class="min-h-[85vh] flex flex-col lg:flex-row items-center px-6 md:px-12 max-w-[1600px] mx-auto gap-12 lg:gap-20 py-12 lg:py-0 structural-border-bottom">
-            
-            <!-- Left Hero Content (Typography & CTAs) -->
-            <div class="w-full lg:w-1/2 flex flex-col justify-center py-12 z-10">
-                
-                <!-- Trust Badges -->
-                <div class="hero-item flex flex-wrap items-center gap-4 md:gap-6 mb-8 text-xs md:text-sm uppercase tracking-[0.2em] font-medium text-gray-500">
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandRed shadow-[0_0_8px_rgba(184,29,36,0.6)]"></span> Fresh
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandYellow shadow-[0_0_8px_rgba(243,166,51,0.6)]"></span> Hygienic
-                    </span>
-                    <span class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-brandGreen shadow-[0_0_8px_rgba(37,154,97,0.6)]"></span> Crafted
-                    </span>
-                </div>
-                
-                <div class="mask-container">
-                    <h1 class="hero-item text-6xl md:text-8xl lg:text-[7rem] font-serif font-medium leading-[1.05] tracking-tight">
-                        Taste You <br>
-                        <span class="italic text-gray-500 font-light">Can Trust.</span>
-                    </h1>
-                </div>
-                
-                <div class="mask-container mt-8">
-                    <p class="hero-item text-base md:text-lg max-w-xl font-light text-gray-600 leading-relaxed">
-                        A refined culinary destination in Chiplun. Elevating locally-sourced ingredients into beautifully handcrafted pizzas, premium stacked sandwiches, and authentic steamed momos.
-                    </p>
-                </div>
-
-                <!-- Strong CTAs -->
-                <div class="hero-item flex flex-col sm:flex-row flex-wrap gap-4 mt-12">
-                    <a href="#menu" class="bg-brandRed text-white px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:bg-red-800 transition-all duration-300 shadow-xl shadow-brandRed/20 text-center">
-                        View Menu
-                    </a>
-                    <a href="#" class="border-2 border-brandGreen text-brandGreen px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:bg-brandGreen hover:text-white transition-all duration-300 flex items-center justify-center gap-2">
-                        <!-- Simple SVG for WhatsApp -->
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.64.847 5.093 2.296 7.07L.606 24l5.05-1.667c1.884 1.258 4.148 1.992 6.375 1.992 6.646 0 12.03-5.385 12.03-12.03S18.677 0 12.03 0zm5.666 17.306c-.267.75-1.545 1.442-2.127 1.488-.582.046-1.354.145-4.423-1.06-3.7-1.455-6.104-5.228-6.287-5.474-.183-.245-1.5-2.002-1.5-3.82s.944-2.716 1.282-3.083c.338-.367.733-.459.977-.459.244 0 .489 0 .692.01.213.01.503-.083.788.61.285.692.977 2.385 1.06 2.568.083.183.136.398.014.643-.122.245-.183.398-.367.612-.183.214-.383.475-.55.628-.184.168-.381.352-.168.718.213.367.944 1.56 2.03 2.535 1.402 1.258 2.578 1.646 2.945 1.83.367.183.582.152.796-.092.214-.244.916-1.07.168-1.437.244-.367.61-.413.885-.306s1.74.825 2.04 1.04-.519.336-.718.52c-.199.184-.199.963-.466 1.714z"/></svg>
-                        Order on WhatsApp
-                    </a>
-                    <a href="#" class="border border-gray-300 text-gray-700 px-8 py-4 rounded-full text-sm uppercase tracking-widest font-medium hover:border-gray-800 hover:text-gray-900 transition-all duration-300 text-center">
-                        Get Directions
-                    </a>
-                </div>
-            </div>
-
-            <!-- Right Hero Content (Premium Showcase Card) -->
-            <div class="hero-item w-full lg:w-1/2 relative h-[500px] lg:h-[700px] rounded-[2rem] overflow-hidden group shadow-2xl">
-                <!-- Cinematic Image -->
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070" class="absolute inset-0 w-full h-full object-cover transition-transform duration-[2000ms] group-hover:scale-110 hero-image-mask" alt="Premium Pizza">
-                
-                <!-- Dark Elegance Gradient -->
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/95 via-dark/40 to-transparent"></div>
-
-                <!-- Floating Flavor Dots (GSAP animated) -->
-                <div class="flavor-dot absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-brandRed shadow-[0_0_15px_rgba(184,29,36,1)]"></div>
-                <div class="flavor-dot absolute top-1/3 right-1/4 w-2 h-2 rounded-full bg-brandYellow shadow-[0_0_15px_rgba(243,166,51,1)]"></div>
-                <div class="flavor-dot absolute bottom-1/3 right-1/3 w-4 h-4 rounded-full bg-brandGreen shadow-[0_0_15px_rgba(37,154,97,1)]"></div>
-
-                <!-- Glassmorphism Highlight Card -->
-                <div class="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 bg-white/10 backdrop-blur-xl border border-white/20 p-6 md:p-8 rounded-[1.5rem] text-white transform transition-transform duration-700 group-hover:-translate-y-2">
-                    <h3 class="font-serif text-2xl md:text-3xl italic mb-6">Culinary Highlights</h3>
-                    <ul class="space-y-4 md:space-y-5 text-xs md:text-sm tracking-widest uppercase font-medium">
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandYellow transition-colors">Artisanal Pizzas</span>
-                            <span class="text-brandYellow text-[10px] md:text-xs">Hand-tossed</span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandRed transition-colors">Signature Sandwiches</span>
-                            <span class="text-brandRed text-[10px] md:text-xs">Premium Stack</span>
-                        </li>
-                        <li class="flex items-center justify-between border-b border-white/10 pb-3 md:pb-4 group/item">
-                            <span class="group-hover/item:text-brandGreen transition-colors">Authentic Momos</span>
-                            <span class="text-brandGreen text-[10px] md:text-xs">Freshly Steamed</span>
-                        </li>
-                        <li class="flex items-center justify-between group/item">
-                            <span class="group-hover/item:text-white transition-colors">Crafted Beverages</span>
-                            <span class="text-white/50 text-[10px] md:text-xs">Refreshing</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Today's Fresh Picks Section -->
-        <section id="menu" class="py-24 px-6 md:px-12 max-w-[1600px] mx-auto">
-            
-            <!-- Section Header -->
-            <div class="mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-                <div class="mask-container">
-                    <h2 class="section-header text-xs uppercase tracking-[0.4em] text-gray-400 mb-4">Chef's Selection</h2>
-                    <h3 class="section-header text-4xl md:text-5xl lg:text-6xl font-serif">Today's Fresh Picks</h3>
-                </div>
-                <a href="#" class="section-header text-sm uppercase tracking-widest font-medium border-b border-dark pb-1 hover:text-brandRed hover:border-brandRed transition-colors">
-                    Explore Full Menu
-                </a>
-            </div>
-
-            <!-- Fresh Picks Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-                
-                <!-- Card 1 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Sandwich">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandRed shadow-sm">
-                            Best Seller
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandRed transition-colors">Bhuna Chicken Club</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">Spicy roasted chicken, fresh greens, and our proprietary house spread stacked perfectly on premium grilled artisan bread.</p>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Pizza">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandYellow shadow-sm">
-                            Chef's Pick
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandYellow transition-colors">Smoked Pesto Margherita</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">A vibrant blend of hand-selected mozzarella and cheddar, finished with house-made basil pesto on fresh hand-tossed dough.</p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="fresh-card group cursor-pointer">
-                    <div class="relative h-[400px] rounded-[1.5rem] overflow-hidden mb-6 shadow-sm">
-                        <img src="https://images.unsplash.com/photo-1625220194771-7ebedd0b4a1c?q=80&w=800" class="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105" alt="Momos">
-                        <div class="absolute inset-0 bg-dark/10 group-hover:bg-transparent transition-colors duration-700"></div>
-                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest text-brandGreen shadow-sm">
-                            Freshly Made
-                        </div>
-                    </div>
-                    <h4 class="text-2xl font-serif mb-3 group-hover:text-brandGreen transition-colors">Authentic Steamed Momos</h4>
-                    <p class="text-gray-500 text-sm font-light leading-relaxed">Delicate, hand-pleated dumplings filled with premium ingredients, served steaming hot alongside our signature fiery spice dip.</p>
-                </div>
-
-            </div>
-        </section>
-        
-        <!-- Elegant Footer -->
-        <footer class="py-16 px-6 border-t border-borderGray text-center mt-12">
-            <img src="logo.png" alt="3Singles Mark" class="w-12 h-12 mx-auto mb-6 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-            <p class="text-gray-400 text-xs tracking-[0.3em] uppercase">3Singles Cafe • Chiplun • Premium Experience</p>
-        </footer>
-    </main>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const tl = gsap.timeline();
-
-            // 1. Red Light Sequence
-            tl.fromTo("#text-red", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" })
-              .to("#light-red", { 
-                  backgroundColor: "#ff2a2a", 
-                  boxShadow: "0 0 50px rgba(255,42,42,0.8), inset 0 0 25px rgba(255,255,255,0.5)", 
-                  duration: 0.6, 
-                  ease: "power2.out" 
-              }, "<");
-
-            // 2. Yellow Light Sequence
-            tl.to("#light-red", { backgroundColor: "#111", boxShadow: "inset 0px 6px 12px rgba(0,0,0,0.9)", duration: 0.4 }, "+=0.6")
-              .to("#text-red", { opacity: 0, y: -5, duration: 0.3 }, "<")
-              .fromTo("#text-yellow", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "<0.1")
-              .to("#light-yellow", { 
-                  backgroundColor: "#ffba08", 
-                  boxShadow: "0 0 50px rgba(255,186,8,0.8), inset 0 0 25px rgba(255,255,255,0.5)", 
-                  duration: 0.6, 
-                  ease: "power2.out" 
-              }, "<");
-
-            // 3. Green Light Sequence
-            tl.to("#light-yellow", { backgroundColor: "#111", boxShadow: "inset 0px 6px 12px rgba(0,0,0,0.9)", duration: 0.4 }, "+=0.6")
-              .to("#text-yellow", { opacity: 0, y: -5, duration: 0.3 }, "<")
-              .fromTo("#text-green", { y: 5 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, "<0.1")
-              .to("#light-green", { 
-                  backgroundColor: "#00ff7f", 
-                  boxShadow: "0 0 60px rgba(0,255,127,0.9), inset 0 0 25px rgba(255,255,255,0.6)", 
-                  duration: 0.6, 
-                  ease: "power2.out" 
-              }, "<");
-
-            // 4. Smooth Fade/Scale Signal Housing
-            tl.to(".housing-container", { 
-                scale: 0.9, 
-                opacity: 0, 
-                duration: 0.6, 
-                ease: "power2.inOut" 
-            }, "+=0.5");
-
-            // 5. Premium Soft Logo Reveal
-            tl.fromTo("#real-logo-container", 
-                { scale: 0.9, opacity: 0 }, 
-                { scale: 1, opacity: 1, duration: 1.2, ease: "power3.out" }, 
-                "-=0.3"
-            );
-            // Slight glowing pulse on logo
-            tl.to("#real-logo", { 
-                boxShadow: "0 0 60px rgba(255,255,255,0.8), 0 10px 40px rgba(0,0,0,0.1)", 
-                duration: 1, 
-                ease: "power2.out" 
-            }, "<0.2");
-
-            // 6. Cinematic Curtain Reveal
-            tl.to("#loader-wrapper", {
-                yPercent: -100,
-                duration: 1.2,
-                ease: "power4.inOut",
-                delay: 0.8, 
-                onComplete: () => {
-                    document.getElementById('loader-wrapper').style.display = 'none';
-                }
-            })
-            
-            // 7. Reveal Website & Hero Content
-            .set("#smooth-wrapper", { opacity: 1 }, "-=1.2")
-            .from(".hero-item", {
-                y: 40,
-                opacity: 0,
-                duration: 1.2,
-                stagger: 0.15,
-                ease: "power3.out"
-            }, "-=0.6");
-
-            // 8. Flavor Dots Floating Animation
-            gsap.utils.toArray('.flavor-dot').forEach(dot => {
-                gsap.to(dot, {
-                    y: "random(-15, 15)",
-                    x: "random(-15, 15)",
-                    rotation: "random(-10, 10)",
-                    duration: "random(2.5, 4)",
-                    repeat: -1,
-                    yoyo: true,
-                    ease: "sine.inOut"
-                });
-            });
-
-            // 9. Scroll Reveal Logic for Fresh Picks Section
-            const headerItems = document.querySelectorAll('.section-header');
-            const headerObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        gsap.fromTo(entry.target, 
-                            { y: 30, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
-                        );
-                        headerObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            headerItems.forEach(item => headerObserver.observe(item));
-
-            const freshCards = document.querySelectorAll('.fresh-card');
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        gsap.fromTo(entry.target, 
-                            { y: 50, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1.2, ease: "power3.out" }
-                        );
-                        cardObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            freshCards.forEach(card => cardObserver.observe(card));
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
