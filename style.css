@@ -197,25 +197,30 @@ body.is-loaded .loader {
 .stage.light-green .lens.green {
   box-shadow: inset 0 10px 16px rgba(255,255,255,.18), inset 0 -12px 18px rgba(0,0,0,.33), 0 0 0 8px rgba(0,0,0,.22), 0 0 28px rgba(52,196,104,.42);
 }
+.logo-stage {
+  position: relative;
+  width: min(78vw, 480px);
+  aspect-ratio: 610 / 584;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
 .orbs {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(78vw, 540px);
-  height: clamp(120px, 24vw, 168px);
-  transform: translate(-50%, -50%);
+  inset: 0;
   pointer-events: none;
+  z-index: 1;
 }
 .orb {
   position: absolute;
+  left: 50%;
   top: 50%;
-  width: clamp(94px, 16vw, 128px);
-  height: clamp(94px, 16vw, 128px);
-  margin-top: calc(clamp(94px, 16vw, 128px) / -2);
+  width: 24.3%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
   opacity: 0;
-  transform: translateY(0) scale(.88);
-  transition: left 760ms var(--ease-premium), transform 760ms var(--ease-premium), opacity 560ms ease, filter 560ms ease;
+  transform: translate(-50%, -50%) scale(.88);
+  transition: left 760ms var(--ease-premium), top 760ms var(--ease-premium), transform 760ms var(--ease-premium), opacity 560ms ease, filter 560ms ease;
   box-shadow: 0 16px 30px rgba(60, 37, 24, .10);
 }
 .orb::before {
@@ -226,19 +231,22 @@ body.is-loaded .loader {
   background: rgba(255,255,255,.18);
   filter: blur(4px);
 }
-.orb-red { left: calc(50% - 49px); background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #ff3043 0%, #ea1225 100%); }
-.orb-yellow { left: calc(50% - 49px); background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #ffd257 0%, #f2b124 100%); }
-.orb-green { left: calc(50% - 49px); background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #57d784 0%, #24b65b 100%); }
+.orb-red { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #ff3043 0%, #ea1225 100%); width: 25.6%; }
+.orb-yellow { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #ffd257 0%, #f2b124 100%); width: 22.8%; }
+.orb-green { background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.32), transparent 18%), linear-gradient(135deg, #57d784 0%, #24b65b 100%); width: 24.8%; }
 .stage.phase-morph .orbs .orb {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
-.stage.phase-morph .orb-red { left: calc(50% - clamp(160px, 26vw, 210px)); }
-.stage.phase-morph .orb-yellow { left: calc(50% - clamp(64px, 10.5vw, 82px)); }
-.stage.phase-morph .orb-green { left: calc(50% + clamp(32px, 5.5vw, 42px)); }
+.stage.phase-morph .orb-red,
+.stage.phase-logo .orb-red { left: 22.38%; top: 49.0%; }
+.stage.phase-morph .orb-yellow,
+.stage.phase-logo .orb-yellow { left: 49.59%; top: 49.0%; }
+.stage.phase-morph .orb-green,
+.stage.phase-logo .orb-green { left: 76.72%; top: 49.1%; }
 .stage.phase-logo .orbs .orb {
-  opacity: .26;
-  filter: blur(.2px);
+  opacity: .18;
+  filter: blur(.15px);
 }
 .brand-block {
   position: relative;
@@ -455,14 +463,14 @@ body.is-loaded .site-preview {
   .signal { width: 78px; height: 230px; }
   .brand-block { width: min(90vw, 440px); min-height: 360px; }
   .brand-halo { width: min(86vw, 420px); }
-  .brand-logo { width: min(80vw, 380px); }
+  .logo-stage { width: min(80vw, 380px); }
   .tagline { font-size: 13px; letter-spacing: .24em; text-indent: .24em; }
   .progress { width: min(76vw, 320px); }
   .scene-shadow { width: min(82vw, 440px); }
 }
 @media (max-height: 680px) {
   .brand-block { min-height: 320px; }
-  .brand-logo { width: min(68vw, 360px); }
+  .logo-stage { width: min(68vw, 360px); }
   .brand-halo { width: min(74vw, 410px); }
 }
 @media (prefers-reduced-motion: reduce) {
